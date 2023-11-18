@@ -1,0 +1,80 @@
+#foto{
+    width: 200px;
+    height: 60px;
+    margin-left: -90px;
+    align-self: center;
+    flex-wrap: wrap;
+    border: solid white;
+    padding: 2px;
+}
+#shoppingbag{
+    width: 70px;
+}
+#favourites{
+    width: 50px;
+    margin-top: 20px ;
+}
+
+.search{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 30px;
+   }
+
+.headeri{
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: black;
+    height: 100px;
+}
+.favbag{
+    display: flex;
+    justify-content: space-between;
+}
+.favbag{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dyqani{
+    margin-top: 10px;
+    border: solid black;
+}
+.navbar{
+    display: block;
+
+}
+.WomanMan{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    font-size: larger;
+    text-align: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    color: aliceblue;
+    text-decoration: none;
+    
+
+}
+.WomanMan a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+#W{
+    background-image: url(images/Front/WOMAN.jpg) ;
+    width: 45%;
+    height: 700px;
+}
+#M{
+    background-image: url(images/Front/MAN.JPG);
+    width: 45%;
+    height: 700px;
+}
