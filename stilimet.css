@@ -25,6 +25,10 @@
     height: 30px;
    }
 
+#search{
+    border-radius: 10px;
+}
+
 .headeri{
     padding-top: 20px;
     display: flex;
