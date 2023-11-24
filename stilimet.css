@@ -41,10 +41,6 @@
     display: flex;
     justify-content: space-between;
 }
-.favbag{
-    display: flex;
-    justify-content: space-between;
-}
 
 .dyqani{
     margin-top: 10px;
@@ -177,6 +173,10 @@ footer>div{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
+.produkti {
+    border: solid;
+    background-color: white;
+}
 .produkti>h3{
     margin-top: 5px;
 }
@@ -200,14 +200,22 @@ footer>div{
 
 .shop img{
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.produkti {
-    border: solid;
+.shop button{
+    border: 0px;
+    padding: 0px;
     background-color: white;
+}
+#fav1 .fa-heart{
+    font-size: 40px;
+}
+
+#fav2 .fa-heart{
+    font-size: 40px;
 }
 #masa{
     display: flex;

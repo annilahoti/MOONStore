@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeans</title>
     <link rel="stylesheet" href="../stilimet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
 </head>
 <body>
     <header class="headeri">
@@ -37,9 +38,12 @@
         <div class="products">
 
             <div class="produkti">
-                <img src="../images/Man/Jeans/Baggy-jeans-1.jpg" alt="Baggy Jeans">
+                <div>
+                    <img src="../images/Man/Jeans/Baggy-jeans-1.jpg" alt="Baggy Jeans">
                 <h2>Baggy Jeans</h2>
                 <p>Price: 29.99€</p>
+                </div>
+
                 <div class="shop">
                 <select id="masa">
                     <option>XS</option>
@@ -48,8 +52,8 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <img src="../images/Front/favoriteblack.png" class="shop">
-                <img src="../images/Front/Shop.png" class="shop">
+                <button onclick="fav()" class="zemra"><img src="../images/Front/favorite.png" alt=""></i></button>
+                <button><img src="../images/Front/Shop.png"></button>
             </div>
             </div>
 
@@ -57,6 +61,7 @@
             <div><img src="../images/Man/Jeans/Baggy-jeans-2.jpg" alt="Baggy Jeans">
                 <h2>Baggy Jeans</h2>
                 <p>Price: 29.99€</p>
+            </div>
                 <div class="shop">
                     <select id="masa">
                         <option>XS</option>
@@ -65,96 +70,321 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <img src="../images/Front/favoriteblack.png" class="shop">
+                    <button onclick="fav1()" id="fav2"><i class="fa-regular fa-heart"></i></i></button>
+                    <button><img src="../images/Front/Shop.png" class="shop"></button>
+                </div>
+            </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Baggy-jeans-3.jpg" alt="Baggy Jeans">
+                    <h2>Baggy Jeans</h2>
+                    <p>Price: 29.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button><img src="../images/Front/favorite.png" class="shop"></button>
+                    <button><img src="../images/Front/Shop.png" class="shop"></button>
+                </div>
+            </div>
+            
+            
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Baggy-skater-cargo-jeans.jpg" alt="Baggy Skater Cargo Jeans">
+                    <h2>Skater Cargo Jeans</h2>
+                    <p>Price: 35.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button><img src="../images/Front/favorite.png" class="shop"></button>
+                    <button><img src="../images/Front/Shop.png" class="shop"></button>
+                </div>
+            </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Basic-slim-jeans-1.jpg" alt="Basic Slim Jeans">
+                    <h2>Basic Slim Jeans</h2>
+                    <p>Price: 19.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button><img src="../images/Front/favorite.png" class="shop"></button>
+                    <button><img src="../images/Front/Shop.png" class="shop"></button>
+                </div>
+            </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Carpenter-jeans-1.jpg" alt="Carpenter Jeans">
+                    <h2>Carpenter Jeans</h2>
+                    <p>Price: 24.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button><img src="../images/Front/favorite.png" class="shop"></button>
+                    <button><img src="../images/Front/Shop.png" class="shop"></button>
+                </div>
+            </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Carpenter-jeans-2.jpg" alt="Carpenter Jeans">
+                    <h2>Carpenter Jeans</h2>
+                    <p>Price: 24.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button><img src="../images/Front/favorite.png" class="shop"></button>
+                    <button><img src="../images/Front/Shop.png" class="shop"></button>
+                </div>
+            </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Carpenter-jeans-3.jpg" alt="Carpenter Jeans">
+                    <h2>Carpenter Jeans</h2>
+                    <p>Price: 24.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
                     <img src="../images/Front/Shop.png" class="shop">
                 </div>
             </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Carpenter-jeans-4.jpg" alt="Carpenter Jeans">
+                    <h2>Carpenter Jeans</h2>
+                    <p>Price: 24.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
             </div>
 
-            <div class="produkti"></div>
-            <div><img src="../images/Man/Jeans/Baggy-jeans-3.jpg" alt="Baggy Jeans">
-                <h3>Baggy Jeans</h3>
-                <p>Price: 29.99€</p>
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Dark-blue-standard-jeans.jpg" alt="Dark Blue Standard Jeans">
+                    <h2>Dark Blue Standard Jeans</h2>
+                    <p>Price: 19.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
             </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Jogger-jeans-1.jpg" alt="Jogger Jeans">
+                    <h2>Jogger Jeans</h2>
+                    <p>Price: 15.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
+            </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Jogger-jeans-2.jpg" alt="Jogger Jeans">
+                    <h2>Jogger Jeans</h2>
+                    <p>Price: 15.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
+            </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Relaxed-fit-jeans.jpg" alt="Relaxed Fit Jeans">
+                    <h2>Relaxed Fit Jeans</h2>
+                    <p>Price: 19.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
+            </div>
+
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Ripped-jogger-jeans.jpg" alt="Ripped Jogger Jeans">
+                    <h2>Ripped Jogger Jeans</h2>
+                    <p>Price: 22.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
+            </div>
+
             
-            <div><img src="../images/Man/Jeans/Baggy-skater-cargo-jeans.jpg" alt="Baggy Skater Cargo Jeans">
-                <h3>Baggy Skater Cargo Jeans</h3>
-                <p>Price: 35.99€</p>
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Standard-cargo-jeans-2.jpg" alt="Standard Cargo Jeans">
+                    <h2>Standard Cargo Jeans</h2>
+                    <p>Price: 19.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
             </div>
 
-            <div><img src="../images/Man/Jeans/Basic-slim-jeans-1.jpg" alt="Basic Slim Jeans">
-                <h3>Basic Slim Jeans</h3>
-                <p>Price: 19.99€</p>
+            
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Standard-cargo-jeans.jpg" alt="Standard Cargo Jeans">
+                    <h2>Standard Cargo Jeans</h2>
+                    <p>Price: 19.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
             </div>
 
-            <div><img src="../images/Man/Jeans/Carpenter-jeans-1.jpg" alt="Carpenter Jeans">
-                <h3>Carpenter Jeans</h3>
-                <p>Price: 24.99€</p>
+            
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Standard-jeans-1.jpg" alt="Standard Jeans">
+                    <h2>Standard Jeans</h2>
+                    <p>Price: 17.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
             </div>
 
-            <div><img src="../images/Man/Jeans/Carpenter-jeans-2.jpg" alt="Carpenter Jeans">
-                <h3>Carpenter Jeans</h3>
-                <p>Price: 24.99€</p>
+            
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Standard-jeans-2.jpg" alt="Standard Jeans">
+                    <h2>Standard Jeans</h2>
+                    <p>Price: 17.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
             </div>
 
-            <div><img src="../images/Man/Jeans/Carpenter-jeans-3.jpg" alt="Carpenter Jeans">
-                <h3>Carpenter Jeans</h3>
-                <p>Price: 24.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Carpenter-jeans-4.jpg" alt="Carpenter Jeans">
-                <h3>Carpenter Jeans</h3>
-                <p>Price: 24.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Dark-blue-standard-jeans.jpg" alt="Dark Blue Standard Jeans">
-                <h3>Dark Blue Standard Jeans</h3>
-                <p>Price: 19.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Jogger-jeans-1.jpg" alt="Jogger Jeans">
-                <h3>Jogger Jeans</h3>
-                <p>Price: 15.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Jogger-jeans-2.jpg" alt="Jogger Jeans">
-                <h3>Jogger Jeans</h3>
-                <p>Price: 15.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Relaxed-fit-jeans.jpg" alt="Relaxed Fit Jeans">
-                <h3>Relaxed Fit Jeans</h3>
-                <p>Price: 19.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Ripped-jogger-jeans.jpg" alt="Ripped Jogger Jeans">
-                <h3>Ripped Jogger Jeans</h3>
-                <p>Price: 22.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Standard-cargo-jeans-2.jpg" alt="Standard Cargo Jeans">
-                <h3>Standard Cargo Jeans</h3>
-                <p>Price: 19.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Standard-cargo-jeans.jpg" alt="Standard Cargo Jeans">
-                <h3>Standard Cargo Jeans</h3>
-                <p>Price: 19.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Standard-jeans-1.jpg" alt="Standard Jeans">
-                <h3>Standard Jeans</h3>
-                <p>Price: 17.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Standard-jeans-2.jpg" alt="Standard Jeans">
-                <h3>Standard Jeans</h3>
-                <p>Price: 17.99€</p>
-            </div>
-
-            <div><img src="../images/Man/Jeans/Standard-jeans-3.jpg" alt="Standard Jeans">
-                <h3>Standard Jeans</h3>
-                <p>Price: 17.99€</p>
+            
+            <div class="produkti">
+                <div><img src="../images/Man/Jeans/Standard-jeans-3.jpg" alt="Standard Jeans">
+                    <h2>Standard Jeans</h2>
+                    <p>Price: 17.99€</p>
+                </div>
+                <div class="shop">
+                    <select id="masa">
+                        <option>XS</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <img src="../images/Front/favorite.png" class="shop">
+                    <img src="../images/Front/Shop.png" class="shop">
+                </div>
             </div>
 
             
@@ -174,7 +404,7 @@
         </div>
         <div class="about-us">
             <div class="reth-nesh">
-                <h3>Rreth nesh</h3>
+                <h2>Rreth nesh</h2>
                 <div>
                     <ul class="ul1">
                         <li><a href="#">Rreth nesh</a></li>
@@ -184,7 +414,7 @@
             </div>
 
             <div>
-                <h3>Llogaria</h3>
+                <h2>Llogaria</h2>
                 <div>
                     <ul class="ul1">
                         <li><a href="">Regjistrohu</a></li>
@@ -196,6 +426,13 @@
         </div>
         </div>
 </footer>
+
+<script>
+
+ 
+   
+
+</script>
  
 </body>
 </html>
