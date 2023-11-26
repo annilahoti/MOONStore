@@ -37,6 +37,26 @@
     background-color: black;
     height: 100px;
 }
+
+@media screen and (max-width:900px) {
+  .headeri{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .opsionet{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column ;
+}
+.WomanMan{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+    
+}
 .favbag{
     display: flex;
     justify-content: space-between;
@@ -61,8 +81,6 @@
     font-size: 60px;
     color: aliceblue;
     text-decoration: none;
-    
-
 }
 .WomanMan a{
     text-decoration: none;
@@ -143,6 +161,7 @@ footer>div{
     padding: 5px;
   
 }
+
 
 
 .products{
@@ -236,7 +255,8 @@ footer>div{
     border-radius: 1.25rem;
     background: #fff;
     text-align: center;
-    box-shadow: 100px 100px 100px 100px rgb(0 0 0 /10%);
+    box-shadow: 100px 100px 100px 100px rgba(242, 237, 237, 0.1);
+    border: solid rgb(87, 51, 3)
 
 }
 .maini .card{
@@ -254,11 +274,10 @@ footer>div{
     font-size: 60px;
 }
 .maini{
-    background-color:  rgb(208, 231, 250);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
+    background: rgba(255, 255, 255, 0.5) url(images/Front/magazina.jpg) 20% 80% ;
 }
 .card::before{
     content: "";
@@ -269,7 +288,7 @@ footer>div{
     width: 1000px;
     height: 1000px;
     border-radius: 50%;
-    background: #216ce7;
+    background:  rgba(207, 81, 31, 0.649);
 
 }
 @media (width>=500px){
@@ -294,7 +313,7 @@ footer>div{
     gap: 16px;
     margin: 0 0 36;
 }
-
+.form > input,
 .form > button {
     width: 100%;
     height: 56px;
@@ -317,7 +336,7 @@ footer>div{
     width: 100%;
     height: 56px;
     padding: 0 16px;
-    background: #216ce7;
+    background: rgb(207, 81, 31);
     color: #f9f9f9;
     border: 0;
     font-family: inherit;
@@ -326,4 +345,71 @@ footer>div{
     text-align: center;
     letter-spacing: 2px;
     transition: all 0.375s;
+}
+.aboutus {
+    display: flex;
+}
+.aboutus p{
+    font-size: larger;
+    width: 70%;
+    margin-left: 100px;
+}
+.magazina img{
+    width: 400px;
+    height: 600px;
+    margin: 10px 30px 10px 0px;
+}
+
+.store{
+    
+    display: inline;
+
+    margin-top: 20px;
+
+}
+.store img{
+    margin-left: 100px;
+margin-right: 10px;
+margin-bottom: 20px;
+width: 70%
+}
+.about-us2{
+    background-color: burlywood;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.about-us2 a{
+    text-decoration: none;
+    color: black;
+}
+.magazina img{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#signup:hover{
+    background-color: white;
+    border: solid black;
+    color: black;
+}
+
+.policies{
+    background-color: burlywood;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.policies a{
+    text-decoration: none;
+    color: black;
+}
+.privacy{
+    border: solid black;
 }
