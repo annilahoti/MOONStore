@@ -2,15 +2,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
     <link rel="stylesheet" href="stilimet.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
-    <title>Front page</title>
 </head>
 <body>
+
     <header class="headeri">
 
         <div class="logo1">
-            <a href="frontpage.html" ><img src="../images/Front/moon.jpg" alt="logo" id="foto"></a>
+            <a href="../frontpage.html" ><img src="../images/Front/moon.jpg" alt="logo" id="foto"></a>
         </div>
 
         <div class="nav">
@@ -37,14 +38,24 @@
         <a href=""><img src="../images/Front/shoppingbag.jpg" alt="shoppingbag" id="shoppingbag"></a>  
     </div>
     </header>
-   
+
     <main>
-    
-        <div class="WomanMan">
-            <a href="woman/woman.html" id="W">WOMAN</a>
-            <a href="man/man.html" id="M" id="M">MAN</a> 
+        <div class="maini">
+        <div class="card">
+            <i class="fa-solid fa-user" style="color: #ffffff; width: 100px; height: 100px;"></i>
+            <h1>Welcome Back</h1>
+            <p>Enter your email address and password to log in.</p>
+            <form class="form">
+                <input type="email" placeholder="Email"/>
+                <input type="password" placeholder="Password"/>
+                <button type="submit" id="signup">LOG IN</button>
+            </form>
+            <footer>If you dont have an account, sign up <a href="signUp.html">here</a></footer>
         </div>
+    </div>
     </main>
+
+    
 
     <footer>
         <div class="footeri">
@@ -79,7 +90,6 @@
             </div>
             </div>
     </footer>
-
-
+    
 </body>
 </html>
