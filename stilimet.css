@@ -75,7 +75,8 @@
   .headeri{
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
+    height: auto;
   }
   .opsionet{
     display:flex;
@@ -87,8 +88,15 @@
     flex-wrap: wrap;
     flex-direction: column;
 }
+ main{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+ }   
+}
 
-    
+header{
+    position: static;
 }
 .favbag{
     display: flex;
@@ -297,6 +305,7 @@ footer>div{
 .maini .card{
     margin-top: 20px;
     margin-bottom: 20px;
+    
 }
 .card i{
     position: absolute;

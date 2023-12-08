@@ -4,10 +4,10 @@ function fav(id){
         let favoriteElement2 = favoriteElement[i];
         if(favoriteElement2.id == id){
 
-            if(favoriteElement2.innerHTML === '<img src="../images/Front/favorite.png" alt="">' ){
-                favoriteElement2.innerHTML = '<img src="../images/Front/full-favorite.png" alt="">';
+            if(favoriteElement2.innerHTML === '<img src="../images/Front/favorite.png" alt="favorite">' ){
+                favoriteElement2.innerHTML = '<img src="../images/Front/full-favorite.png" alt="favorite">';
             }else{
-                favoriteElement2.innerHTML = '<img src="../images/Front/favorite.png" alt="">';
+                favoriteElement2.innerHTML = '<img src="../images/Front/favorite.png" alt="favorite">';
             }
         }  
     }
