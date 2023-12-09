@@ -149,6 +149,9 @@ footer>div{
     flex-wrap: wrap;
     justify-content: center;
 }
+.socials i{
+    font-size: x-large;
+}
 .socials a{
     justify-content: space-between;
     padding-left: 5px;
@@ -158,7 +161,9 @@ footer>div{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    color: aliceblue;    
+    color: aliceblue;  
+    padding-top: 20px;
+    padding-bottom: 20px;  
 }
 .ul1{
     list-style:"\00BB" ;
@@ -298,7 +303,7 @@ footer>div{
     border-radius: 1.25rem;
     background: #fff;
     text-align: center;
-    box-shadow: 100px 100px 100px 100px rgba(242, 237, 237, 0.1);
+    ;
     border: solid rgb(87, 51, 3)
 
 }
@@ -397,6 +402,12 @@ footer>div{
     font-size: larger;
     width: 70%;
     margin-left: 100px;
+}
+textarea{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-radius: 20px;
+    text-align: center;
+    height: 80px;
 }
 .magazina img{
     width: 400px;
