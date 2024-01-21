@@ -10,23 +10,8 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <img src="images/Front/moon.jpg">
-        </div>
+<?php include 'header.php'; ?>
 
-        <div class="nav">
-            <a href="">Home</a>
-            <a href="">About Us</a>
-            <a href="">Contact Us</a>
-            <a href="" style="border-bottom: 3px solid burlywood;"><img src="images/Front/user1.png" id="user"></a>
-            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
-            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
-        </div>
-    </header>
-
-  
-    <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
 
     <main>
         <div class="maini">
@@ -41,43 +26,12 @@
                 <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
                 <button type="submit" id="signup">SIGN UP</button>
             </form>
-            <footer>Existing users, sign in <a href="logIn.html">here</a></footer>
+            <footer>Existing users, sign in <a href="logIn.php">here</a></footer>
         </div>
     </div>
     </main>
-    <footer>
-        <div class="footeri">
-            <div class="logo2">
-                <a href="frontpage.html"><img src="images/Front/moon.jpg" alt="logo" id="logo"></a>
-            </div>
-            
-            <div class="socials">
-                <a href="#"><i class="fa-brands fa-facebook" style="color: white;"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram" style="color: white;"></i></a>
-            </div>
-            <div class="about-us">
-                <div class="reth-nesh">
-                    <h3>About us</h3>
-                    <div>
-                        <ul class="ul1">
-                            <li><a href="/AboutUs.html">About us</a></li>
-                            <li><a href="/Policies.html">Policies</a></li>
-                        </ul>
-                    </div>
-                </div>
 
-                <div>
-                    <h3>My Account</h3>
-                    <div>
-                        <ul class="ul1">
-                            <li><a href="">Register</a></li>
-                            <li><a href="#">My Account</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
 
 

@@ -9,26 +9,11 @@
 
 <body>
   
-    <header>
-        <div class="logo">
-            <img src="images/Front/moon.jpg">
-        </div>
+<?php include 'header.php'; ?>
 
-        <div class="nav">
-            <a href="">Home</a>
-            <a href="">About Us</a>
-            <a href="">Contact Us</a>
-            <a href=""><img src="images/Front/user1.png" id="user"></a>
-            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
-            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
-        </div>
-    </header>
-
-  
-    <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
 
  <div class="policies">
-    <a href="Policies.html"><h1>POLICIES</h1></a>
+    <a href="Policies.php"><h1>POLICIES</h1></a>
  </div>
 
         <h1 style="text-align: center;">PRIVACY POLICY</h1>
@@ -182,38 +167,6 @@
                             Return the items you would like to exchange and you will receive the refund. <a href="#how">Check how to return items here.</a></p>
                         </body>
                         
-                        <footer>
-                            <div class="footeri">
-                                <div class="logo2">
-                                    <a href="frontpage.html"><img src="images/Front/moon.jpg" alt="logo" id="logo"></a>
-                                </div>
-                                
-                                <div class="socials">
-                                    <a href="#"><i class="fa-brands fa-facebook" style="color: white;"></i></a>
-                                    <a href="#"><i class="fa-brands fa-instagram" style="color: white;"></i></a>
-                                </div>
-                                <div class="about-us">
-                                    <div class="reth-nesh">
-                                        <h3>About us</h3>
-                                        <div>
-                                            <ul class="ul1">
-                                                <li><a href="/AboutUs.html">About us</a></li>
-                                                <li><a href="/Policies.html">Policies</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                    
-                                    <div>
-                                        <h3>My Account</h3>
-                                        <div>
-                                            <ul class="ul1">
-                                                <li><a href="">Register</a></li>
-                                                <li><a href="#">My Account</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                        </footer>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

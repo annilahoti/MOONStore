@@ -15,9 +15,11 @@
         </div>
 
         <div class="nav">
-            <a href="">Home</a>
-            <a href="">About Us</a>
-            <a href="">Contact Us</a>
+            
+    
+            <a href="../home.php">Home</a>
+            <a href="../AboutUs.php">About Us</a>
+            <a href="../ContactUs.php">Contact Us</a>
             <a href=""><img src="../images/Front/user1.png" id="user"></a>
             <a href=""><img src="../images/Front/favorites.jpg" id="fav"></a>
             <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
@@ -28,13 +30,13 @@
     <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
 
  <div class="woman">
-    <a href="woman.html"><h1>WOMAN SECTION</h1></a>
+    <a href="woman.php"><h1>WOMAN SECTION</h1></a>
     <div class="opsionet">
-    <a href="woman.html" id="NEW" ><b><i>New arrivals</i></b></a>
-    <a href="Tops.html">Tops</a>
-    <a href="Dresses.html">Dresses</a>
-    <a href="Jeans&Trousers.html">Jeans/Trousers</a>
-    <a href="Jackets&Coats.html" style="background-color: brown; color: white;">Jackets/Coats</a>
+    <a href="woman.php" id="NEW" ><b><i>New arrivals</i></b></a>
+    <a href="Tops.php">Tops</a>
+    <a href="Dresses.php">Dresses</a>
+    <a href="Jeans&Trousers.php">Jeans/Trousers</a>
+    <a href="Jackets&Coats.php" style="background-color: brown; color: white;">Jackets/Coats</a>
 </div>
  </div>
 
@@ -409,7 +411,7 @@
     <footer>
         <div class="footeri">
             <div class="logo2">
-                <a href="frontpage.html"><img src="images/Front/moon.jpg" alt="logo" id="logo"></a>
+                <a href="../home.php"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
             </div>
             
             <div class="socials">
@@ -421,8 +423,8 @@
                     <h3>About us</h3>
                     <div>
                         <ul class="ul1">
-                            <li><a href="/AboutUs.html">About us</a></li>
-                            <li><a href="/Policies.html">Policies</a></li>
+                            <li><a href="../AboutUs.php">About us</a></li>
+                            <li><a href="../Policies.php">Policies</a></li>
                         </ul>
                     </div>
                 </div>

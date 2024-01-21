@@ -8,7 +8,7 @@
 <footer>
         <div class="footeri">
             <div class="logo2">
-                <a href="frontpage.html"><img src="images/Front/moon.jpg" alt="logo" id="logo"></a>
+                <a href="home.php"><img src="images/Front/moon.jpg" alt="logo" id="logo"></a>
             </div>
             
             <div class="socials">
@@ -20,8 +20,8 @@
                     <h3>About us</h3>
                     <div>
                         <ul class="ul1">
-                            <li><a href="/AboutUs.html">About us</a></li>
-                            <li><a href="/Policies.html">Policies</a></li>
+                            <li><a href="AboutUs.php">About us</a></li>
+                            <li><a href="Policies.php">Policies</a></li>
                         </ul>
                     </div>
                 </div>
