@@ -15,9 +15,9 @@
         </div>
 
         <div class="nav">
-            <a href="">Home</a>
-            <a href="">About Us</a>
-            <a href="">Contact Us</a>
+            <a href="home.php">Home</a>
+            <a href="AboutUs.php">About Us</a>
+            <a href="ContactUs.php">Contact Us</a>
             <a href=""><img src="images/Front/user1.png" id="user"></a>
             <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
             <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>

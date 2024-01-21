@@ -8,44 +8,31 @@
     <script src="../funksionet.js"></script>
 </head>
 <body>
-    <header class="headeri">
-
-        <div class="logo1">
-            <a href="../frontpage.html" ><img src="../images/Front/moon.jpg" alt="logo" id="foto"></a>
+    <header>
+        <div class="logo">
+            <img src="../images/Front/moon.jpg">
         </div>
 
         <div class="nav">
-            <a href="../frontpage.html">Home</a>
-        </div>
-
-        <div class="nav">
-            <a href="../AboutUs.html">About us</a>
-        </div>
-        
-        
-        
-           <div class="search">
-                <input type="text" placeholder="Search" id="search">
-                <button class="butoni_bg"><img src="../images/Front/search.png" alt="butoni_bg"></button>
-            </div>
-        
-            <div class="nav">
-                <a href="../signUp.html"><i class="fa-solid fa-user" style="color: #ffffff;"></i></a>
-            </div>
             
-        <div class="favbag">
-            <a href=""><img src="../images/Front/favorites.jpg" alt="favourites" id="favourites"></a> 
-        <a href=""><img src="../images/Front/shoppingbag.jpg" alt="shoppingbag" id="shoppingbag"></a>  
-    </div>
+    
+            <a href="../home.php">Home</a>
+            <a href="../AboutUs.php">About Us</a>
+            <a href="../ContactUs.php">Contact Us</a>
+            <a href=""><img src="../images/Front/user1.png" id="user"></a>
+            <a href=""><img src="../images/Front/favorites.jpg" id="fav"></a>
+            <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
+        </div>
     </header>
+    
  <div class="woman">
-   <a href="man.html"><h1>MAN SECTION</h1></a>
+   <a href="man.php"><h1>MAN SECTION</h1></a>
     <div class="opsionet">
-    <a href="man.html"><b><i>New arrivals</i></b></a>
-    <a href="Jackets.html">Jacket</a>
-    <a href="Jeans.html">Jeans</a>
-    <a href="T-shirts.html" style="background-color: brown; color: white;padding: 5px; ">T-shirts</a>
-    <a href="Joggers.html">Joggers</a>
+    <a href="man.php"><b><i>New arrivals</i></b></a>
+    <a href="Jackets.php">Jacket</a>
+    <a href="Jeans.php">Jeans</a>
+    <a href="T-shirts.php" style="background-color: brown; color: white;padding: 5px; ">T-shirts</a>
+    <a href="Joggers.php">Joggers</a>
    
 
 </div>
@@ -425,9 +412,10 @@ Basic Fit T-shirt">
 
  <footer>
         <div class="footeri">
-            <div class="logo">
-                <a href="../frontpage.html"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
+            <div class="logo2">
+                <a href="../home.php"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
             </div>
+            
             <div class="socials">
                 <a href="#"><i class="fa-brands fa-facebook" style="color: white;"></i></a>
                 <a href="#"><i class="fa-brands fa-instagram" style="color: white;"></i></a>
@@ -437,8 +425,8 @@ Basic Fit T-shirt">
                     <h3>About us</h3>
                     <div>
                         <ul class="ul1">
-                            <li><a href="/AboutUs.html">About us</a></li>
-                            <li><a href="/Policies.html">Policies</a></li>
+                            <li><a href="../AboutUs.php">About us</a></li>
+                            <li><a href="../Policies.php">Policies</a></li>
                         </ul>
                     </div>
                 </div>

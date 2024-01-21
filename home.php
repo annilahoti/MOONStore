@@ -9,24 +9,7 @@
 <body>
  
  
-    <header>
-        <div class="logo">
-            <img src="images/Front/moon.jpg">
-        </div>
-
-        <div class="nav">
-            <a href="" style="border-bottom: 3px solid burlywood;">Home</a>
-            <a href="">About Us</a>
-            <a href="">Contact Us</a>
-            <a href=""><img src="images/Front/user1.png" id="user"></a>
-            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
-            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
-        </div>
-    </header>
-
-  
-    <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
-
+<?php include 'header.php'; ?>
 
     <main>
        
@@ -49,8 +32,10 @@
             </fieldset></a>
         </div>
     </main>
+    
+    <?php include 'footer.php'; ?>
 </body>
-<?php include 'footer.php'; ?>
+
 
     <script src="funksionet.js"></script>
   
