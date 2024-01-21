@@ -379,6 +379,7 @@ footer>div{
     background: #fff;
     text-align: center;
     border: solid rgb(87, 51, 3);
+    box-shadow: 0 0 10px rgb(87, 51, 3);
     margin: 20px;
 }
 
@@ -537,7 +538,8 @@ footer>div{
     background: #fff;
     text-align: center;
     margin: 20px;
-    border: solid rgb(82, 41, 14);;
+    border: solid rgb(82, 41, 14);
+    box-shadow: 0 0 10px rgb(87, 51, 3);
 }
 .maincontact{
     display: flex;
