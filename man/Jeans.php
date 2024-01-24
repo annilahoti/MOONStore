@@ -1,3 +1,4 @@
+<?php  session_start();?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,29 +9,40 @@
     <script src="../funksionet.js"></script>
 </head>
 <body>
-    <header>
+<header>
         <div class="logo">
-            <img src="../images/Front/moon.jpg">
+            <img src="images/Front/moon.jpg">
         </div>
+        <?php 
+     $hide="";
+     if(!isset($_SESSION['email'])){
+     header("location:login.php");
+     }
+   else{
+     if($_SESSION['role'] == "admin")
+       $hide = "";
+     else
+       $hide = "hide";
+   }
+        ?>
 
         <div class="nav">
-            
-    
-            <a href="../home.php">Home</a>
-            <a href="../AboutUs.php">About Us</a>
-            <a href="../ContactUs.php">Contact Us</a>
-            <a href=""><img src="../images/Front/user1.png" id="user"></a>
-            <a href=""><img src="../images/Front/favorites.jpg" id="fav"></a>
-            <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
+            <a href="home.php">Home</a>
+            <a href="AboutUs.php">About Us</a>
+            <a href="ContactUs.php">Contact Us</a>
+            <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
+            <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
+            <a href="logout.php">Log Out</a>
+            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
+            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
-    
  <div class="woman">
    <a href="man.php"><h1>MAN SECTION</h1></a>
     <div class="opsionet">
     <a href="man.php"><b><i>New arrivals</i></b></a>
     <a href="Jackets.php">Jacket</a>
-    <a href="Jeans.php" style="background-color: brown; color: white;padding: 5px; ">Jeans</a>
+    <a href="Jeans.php" style="background-color: brown; color: white;">Jeans</a>
     <a href="T-shirts.php">T-shirts</a>
     <a href="Joggers.php">Joggers</a>
    

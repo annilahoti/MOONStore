@@ -1,3 +1,4 @@
+<?php  session_start();?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +9,32 @@
 </head>
 <body>
 
-  
-<?php include 'header.php'; ?>
+<header>
+        <div class="logo">
+            <img src="images/Front/moon.jpg">
+        </div>
+        
+        <?php 
+       $hide="";
+       if($_SESSION['role'] == "admin")
+         $hide = "";
+       else
+         $hide = "hide";
+ 
+        ?>
+
+        <div class="nav">
+            <a href="home.php">Home</a>
+            <a href="AboutUs.php">About Us</a>
+            <a href="ContactUs.php">Contact Us</a>
+            <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
+            <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
+            <a href="logout.php">Log Out</a>
+            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
+            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
+        </div>
+    </header>
+
 
     <main>
         <div class="maini">
@@ -17,10 +42,10 @@
             <i class="fa-solid fa-user" style="color: #ffffff; width: 100px; height: 100px;"></i>
             <h1>Welcome Back</h1>
             <p>Enter your email address and password to log in.</p>
-            <form class="form" onsubmit="return validateForm1()">
-                <input type="email" id="login.email" placeholder="Email" required/>
-                <input type="password" id="login.password" placeholder="Password" required/>
-                <button type="submit" id="signup">LOG IN</button>
+            <form class="form" onsubmit="return validateForm1()" method="POST" action="loginController.php">
+                <input type="email" id="login.email" name="email" placeholder="Email" required/>
+                <input type="password" id="login.password" name="password" placeholder="Password" required/>
+                <button type="submit" id="signup" name="loginbtn" value="Login">LOG IN</button>
             </form>
             <footer>If you dont have an account, sign up <a href="signUp.php">here</a></footer>
         </div>
