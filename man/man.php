@@ -9,31 +9,44 @@
     <script src="../funksionet.js"></script>
 </head>
 <body>
-<header>
+    <header>
         <div class="logo">
-            <img src="../images/Front/moon.jpg">
+        <a href="../home.php"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
         </div>
         <?php 
-     $hide="";
-  
-     if($_SESSION['role'] == "admin")
-       $hide = "";
-     else
-       $hide = "hide";
-   
+        $hide="";
+        $log="";
+        if(isset($_SESSION['email'])){
+            $log="logout";
+        if($_SESSION['role'] == "admin"){
+          $hide = "";
+        }
+        else{
+          $hide = "hide";
+        }
+      }
+      else{
+        $log="";
+        $hide = "hide";
+      }
         ?>
 
-        <div class="nav">
-            <a href="home.php">Home</a>
-            <a href="AboutUs.php">About Us</a>
-            <a href="ContactUs.php">Contact Us</a>
-            <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
-            <a href="signUp.php"><img src="../images/Front/user1.png" id="user"></a>
-            <a href="logout.php">Log Out</a>
-            <a href=""><img src="../images/Front/favorites.jpg" id="fav"></a>
+<div class="nav">
+            <a href="../home.php">Home</a>
+            <a href="../AboutUs.php">About Us</a>
+            <a href="../ContactUs.php">Contact Us</a>
+            <a href="../Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
+            <a href="../signUp.php"><img src="../images/Front/user1.png" id="user"></a>
+            <a href="../logout.php">Log <?php if ($log == "") {
+                echo "In";
+            }else{
+                echo "Out";
+            }?></a>
             <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
+
+    <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
 
     
  <div class="woman">
@@ -66,7 +79,6 @@ Faux Shearling Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.5)" id="1.5" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.005)" id="1.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -85,7 +97,6 @@ Faux Shearling Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.3)" id="1.3" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.003)" id="1.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -104,7 +115,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.12)" id="1.12" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.012)" id="1.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -123,7 +133,6 @@ Double Faced Black Jackett">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.7)" id="1.7" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.007)" id="1.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -142,7 +151,6 @@ Mint Lightweight Quilted Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.1)" id="1.1" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.001)" id="1.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -162,7 +170,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.3)" id="3.3" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.003)" id="3.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -181,7 +188,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.2)" id="3.2" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.002)" id="3.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -200,7 +206,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.1)" id="3.1" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.001)" id="3.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -221,7 +226,6 @@ Baggy Jeans">
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(2.1)" id="2.1" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(2.001)" id="2.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -240,7 +244,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.3)" id="2.3" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.003)" id="2.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -259,7 +262,6 @@ Baggy Jeans">
                             <option>L</option>
                             <option>XL</option>
                         </select>
-                        <button onclick="fav(2.2)" id="2.2" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                         <button onclick="cart(2.002)" id="2.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                     </div>
                 </div>
@@ -278,7 +280,6 @@ Basic Black Hoodie Tracksuit">
                             <option>L</option>
                             <option>XL</option>
                         </select>
-                        <button onclick="fav(4.5)" id="4.5" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                         <button onclick="cart(4.005)" id="4.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                     </div>
                 </div>
@@ -297,7 +298,6 @@ Basic Gray Hoodie Tracksuit">
                             <option>L</option>
                             <option>XL</option>
                         </select>
-                        <button onclick="fav(4.6)" id="4.6" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                         <button onclick="cart(4.006)" id="4.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                     </div>
                 </div>
@@ -316,7 +316,6 @@ Ripped Jogger Jeans">
                             <option>L</option>
                             <option>XL</option>
                         </select>
-                        <button onclick="fav(4.14)" id="4.14" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                         <button onclick="cart(4.014)" id="4.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                     </div>
                 </div>
@@ -335,7 +334,6 @@ Ripped Jogger Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(4.15)" id="4.15" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(4.015)" id="4.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>

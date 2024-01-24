@@ -12,28 +12,42 @@
 <body>
 <header>
         <div class="logo">
-            <img src="images/Front/moon.jpg">
+        <a href="home.php"><img src="images/Front/moon.jpg" alt="logo" id="logo"></a>
         </div>
         <?php 
-        
-      $hide="";
-      if($_SESSION['role'] == "admin")
-        $hide = "";
-      else
+        $hide="";
+        $log="";
+        if(isset($_SESSION['email'])){
+            $log="logout";
+        if($_SESSION['role'] == "admin"){
+          $hide = "";
+        }
+        else{
+          $hide = "hide";
+        }
+      }
+      else{
+        $log="";
         $hide = "hide";
+      }
         ?>
 
-        <div class="nav">
+<div class="nav">
             <a href="home.php">Home</a>
             <a href="AboutUs.php">About Us</a>
             <a href="ContactUs.php">Contact Us</a>
             <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
             <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
-            <a href="logout.php">Log Out</a>
-            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
+            <a href="logout.php">Log <?php if ($log == "") {
+                echo "In";
+            }else{
+                echo "Out";
+            }?></a>
             <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
+
+    <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
 
 
 
@@ -42,13 +56,13 @@
         <div class="card">
             <i class="fa-solid fa-user" style="color: #ffffff; width: 100px; height: 100px;"></i>
             <h1>Create Account</h1>
-            <form class="form" onsubmit="return validateForm()">
-                <input type="text" id="name" placeholder="Name" required/>
-                <input type="text" id="surname" placeholder="Surname" required/>
-                <input type="email" id="email" placeholder="Email" required/>
-                <input type="password" id="password" placeholder="Password" required/>
-                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-                <button type="submit" id="signup">SIGN UP</button>
+            <form class="form" onsubmit="return validateForm()" method="POST" action="registerController.php">
+                <input type="text" id="name" name="name" placeholder="Name" required/>
+                <input type="text" id="surname" name="surname" placeholder="Surname" required/>
+                <input type="email" id="email" name="email" placeholder="Email" required/>
+                <input type="password" id="password" name="password" placeholder="Password" required/>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                <button type="submit" id="signup" name="signupbtn">SIGN UP</button>
             </form>
             <footer>Existing users, sign in <a href="logIn.php">here</a></footer>
         </div>

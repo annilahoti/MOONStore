@@ -1,3 +1,4 @@
+<?php  session_start();?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,30 +12,38 @@
 <body>
 <header>
         <div class="logo">
-            <img src="images/Front/moon.jpg">
+        <a href="../home.php"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
         </div>
         <?php 
-     $hide="";
-     if(!isset($_SESSION['email'])){
-     header("location:login.php");
-     }
-   else{
-     if($_SESSION['role'] == "admin")
-       $hide = "";
-     else
-       $hide = "hide";
-   }
+        $hide="";
+        $log="";
+        if(isset($_SESSION['email'])){
+            $log="logout";
+        if($_SESSION['role'] == "admin"){
+          $hide = "";
+        }
+        else{
+          $hide = "hide";
+        }
+      }
+      else{
+        $log="";
+        $hide = "hide";
+      }
         ?>
 
-        <div class="nav">
-            <a href="home.php">Home</a>
-            <a href="AboutUs.php">About Us</a>
-            <a href="ContactUs.php">Contact Us</a>
-            <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
-            <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
-            <a href="logout.php">Log Out</a>
-            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
-            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
+<div class="nav">
+            <a href="../home.php">Home</a>
+            <a href="../AboutUs.php">About Us</a>
+            <a href="../ContactUs.php">Contact Us</a>
+            <a href="../Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
+            <a href="../signUp.php"><img src="../images/Front/user1.png" id="user"></a>
+            <a href="../logout.php">Log <?php if ($log == "") {
+                echo "In";
+            }else{
+                echo "Out";
+            }?></a>
+            <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
 
@@ -69,7 +78,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.1)" id="10.1" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.001)" id="10.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -88,7 +96,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.2)" id="10.2" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.002)" id="10.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -106,7 +113,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.3)" id="10.3" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.003)" id="10.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -124,7 +130,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.4)" id="10.4" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.004)" id="10.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -142,7 +147,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.5)" id="10.5" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.005)" id="10.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -160,7 +164,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.6)" id="10.6" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.006)" id="10.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -178,7 +181,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.7)" id="10.7" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.007)" id="10.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -196,7 +198,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.8)" id="10.8" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.008)" id="10.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -214,7 +215,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.9)" id="10.9" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.009)" id="10.009" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -233,7 +233,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.11)" id="10.11" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.011)" id="10.011" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -251,7 +250,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.12)" id="10.12" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.012)" id="10.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -269,7 +267,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.13)" id="10.13" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.013)" id="10.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -287,7 +284,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.14)" id="10.14" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(10.014)" id="10.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -305,7 +301,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.15)" id="10.15" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.015)" id="10.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -323,7 +318,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.16)" id="10.16" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.016)" id="10.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -341,7 +335,6 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(10.17)" id="10.17" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.017)" id="10.017" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -361,7 +354,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.18)" id="10.18" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.018)" id="10.018" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -378,7 +370,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.19)" id="10.19" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.019)" id="10.019" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -396,7 +387,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.21)" id="10.21" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.021)" id="10.021" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
@@ -413,7 +403,6 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(10.22)" id="10.22" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(10.022)" id="10.022" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>

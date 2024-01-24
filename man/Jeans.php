@@ -11,32 +11,42 @@
 <body>
 <header>
         <div class="logo">
-            <img src="images/Front/moon.jpg">
+        <a href="../home.php"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
         </div>
         <?php 
-     $hide="";
-     if(!isset($_SESSION['email'])){
-     header("location:login.php");
-     }
-   else{
-     if($_SESSION['role'] == "admin")
-       $hide = "";
-     else
-       $hide = "hide";
-   }
+        $hide="";
+        $log="";
+        if(isset($_SESSION['email'])){
+            $log="logout";
+        if($_SESSION['role'] == "admin"){
+          $hide = "";
+        }
+        else{
+          $hide = "hide";
+        }
+      }
+      else{
+        $log="";
+        $hide = "hide";
+      }
         ?>
 
-        <div class="nav">
-            <a href="home.php">Home</a>
-            <a href="AboutUs.php">About Us</a>
-            <a href="ContactUs.php">Contact Us</a>
-            <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
-            <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
-            <a href="logout.php">Log Out</a>
-            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
-            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
+<div class="nav">
+<a href="../home.php">Home</a>
+            <a href="../AboutUs.php">About Us</a>
+            <a href="../ContactUs.php">Contact Us</a>
+            <a href="../Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
+            <a href="../signUp.php"><img src="../images/Front/user1.png" id="user"></a>
+            <a href="../logout.php">Log <?php if ($log == "") {
+                echo "In";
+            }else{
+                echo "Out";
+            }?></a>
+            <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
+    <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
+
  <div class="woman">
    <a href="man.php"><h1>MAN SECTION</h1></a>
     <div class="opsionet">
@@ -69,7 +79,6 @@ Baggy Jeans">
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="fav(2.1)" id="2.1" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                 <button onclick="cart(2.001)" id="2.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -88,7 +97,6 @@ Baggy Jeans">
                             <option>L</option>
                             <option>XL</option>
                         </select>
-                        <button onclick="fav(2.2)" id="2.2" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                         <button onclick="cart(2.002)" id="2.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                     </div>
                 </div>
@@ -107,7 +115,6 @@ Baggy Jeans">
                             <option>L</option>
                             <option>XL</option>
                         </select>
-                        <button onclick="fav(2.3)" id="2.3" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                         <button onclick="cart(2.003)" id="2.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                     </div>
                 </div>
@@ -125,7 +132,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.4)" id="2.4" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.004)" id="2.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -143,7 +149,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.5)" id="2.5" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.005)" id="2.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -161,7 +166,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.6)" id="2.6" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.006)" id="2.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -179,7 +183,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.7)" id="2.7" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.007)" id="2.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -197,7 +200,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.8)" id="2.8" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.008)" id="2.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -215,7 +217,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.9)" id="2.9" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.009)" id="2.009" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -233,7 +234,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.11)" id="2.11" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.011)" id="2.011" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -251,7 +251,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.12)" id="2.12" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.012)" id="2.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -269,7 +268,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.13)" id="2.13" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.013)" id="2.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -287,7 +285,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.14)" id="2.14" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.014)" id="2.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -305,7 +302,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.15)" id="2.15" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.015)" id="2.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -324,7 +320,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.16)" id="2.16" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.016)" id="2.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -343,7 +338,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.17)" id="2.17" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.017)" id="2.017" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -362,7 +356,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.18)" id="2.18" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.018)" id="2.018" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -381,7 +374,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.19)" id="2.19" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.019)" id="2.019" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -400,7 +392,6 @@ Baggy Jeans">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(2.21)" id="2.21" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(2.021)" id="2.021" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>

@@ -9,34 +9,43 @@
     <script src="../funksionet.js"></script>
 </head>
 <body>
-<header>
+    <header>
         <div class="logo">
-            <img src="images/Front/moon.jpg">
+        <a href="../home.php"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
         </div>
         <?php 
-       $hide="";
-       if(!isset($_SESSION['email'])){
-       header("location:login.php");
-       }
-     else{
-       if($_SESSION['role'] == "admin")
-         $hide = "";
-       else
-         $hide = "hide";
-     }
+        $hide="";
+        $log="";
+        if(isset($_SESSION['email'])){
+            $log="logout";
+        if($_SESSION['role'] == "admin"){
+          $hide = "";
+        }
+        else{
+          $hide = "hide";
+        }
+      }
+      else{
+        $log="";
+        $hide = "hide";
+      }
         ?>
 
         <div class="nav">
-            <a href="home.php">Home</a>
-            <a href="AboutUs.php">About Us</a>
-            <a href="ContactUs.php">Contact Us</a>
-            <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
-            <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
-            <a href="logout.php">Log Out</a>
-            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
-            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
+            <a href="../home.php">Home</a>
+            <a href="../AboutUs.php">About Us</a>
+            <a href="../ContactUs.php">Contact Us</a>
+            <a href="../Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
+            <a href="../signUp.php"><img src="../images/Front/user1.png" id="user"></a>
+            <a href="../logout.php">Log <?php if ($log == "") {
+                echo "In";
+            }else{
+                echo "Out";
+            }?></a>
+            <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
+    <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
 
  <div class="woman">
    <a href="man.php"><h1>MAN SECTION</h1></a>
@@ -69,7 +78,6 @@ Mint Lightweight Quilted Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.1)" id="1.1" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.001)" id="1.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -88,7 +96,6 @@ Mint Lightweight Quilted Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.2)" id="1.2" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.002)" id="1.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -108,7 +115,6 @@ Mint Lightweight Quilted Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.3)" id="1.3" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.003)" id="1.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -127,7 +133,6 @@ Mint Lightweight Quilted Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.4)" id="1.4" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.004)" id="1.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -147,7 +152,6 @@ Faux Shearling Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.5)" id="1.5" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.005)" id="1.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -166,7 +170,6 @@ Faux Shearling Jacket">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.6)" id="1.6" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.006)" id="1.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -186,7 +189,6 @@ Double Faced Black Jackett">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.7)" id="1.7" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.007)" id="1.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -205,7 +207,6 @@ Double Faced Black Jackett">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.8)" id="1.8" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.008)" id="1.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -224,7 +225,6 @@ Double Faced Black Jackett">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.9)" id="1.9" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.009)" id="1.009" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -243,7 +243,6 @@ Double Faced Black Jackett">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.11)" id="1.11" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.011)" id="1.011" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -263,7 +262,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.12)" id="1.12" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.012)" id="1.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -282,7 +280,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.13)" id="1.13" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.013)" id="1.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -301,7 +298,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.14)" id="1.14" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.014)" id="1.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -320,7 +316,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.15)" id="1.15" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.015)" id="1.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -339,7 +334,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.16)" id="1.16" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.016)" id="1.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -358,7 +352,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.17)" id="1.17" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.017)" id="1.017" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -377,7 +370,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.18)" id="1.18" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.018)" id="1.018" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -396,7 +388,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.19)" id="1.19" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.019)" id="1.019" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -415,7 +406,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.21)" id="1.21" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.021)" id="1.021" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -434,7 +424,6 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(1.22)" id="1.22" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(1.022)" id="1.022" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>

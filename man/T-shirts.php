@@ -8,34 +8,45 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <script src="../funksionet.js"></script>
 </head>
-<body><header>
+<body>
+<header>
         <div class="logo">
-            <img src="images/Front/moon.jpg">
+        <a href="../home.php"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
         </div>
         <?php 
-     $hide="";
-     if(!isset($_SESSION['email'])){
-     header("location:login.php");
-     }
-   else{
-     if($_SESSION['role'] == "admin")
-       $hide = "";
-     else
-       $hide = "hide";
-   }
+        $hide="";
+        $log="";
+        if(isset($_SESSION['email'])){
+            $log="logout";
+        if($_SESSION['role'] == "admin"){
+          $hide = "";
+        }
+        else{
+          $hide = "hide";
+        }
+      }
+      else{
+        $log="";
+        $hide = "hide";
+      }
         ?>
 
         <div class="nav">
-            <a href="home.php">Home</a>
-            <a href="AboutUs.php">About Us</a>
-            <a href="ContactUs.php">Contact Us</a>
-            <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
-            <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
-            <a href="logout.php">Log Out</a>
-            <a href=""><img src="images/Front/favorites.jpg" id="fav"></a>
-            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
+            <a href="../home.php">Home</a>
+            <a href="../AboutUs.php">About Us</a>
+            <a href="../ContactUs.php">Contact Us</a>
+            <a href="../Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
+            <a href="../signUp.php"><img src="../images/Front/user1.png" id="user"></a>
+            <a href="../logout.php">Log <?php if ($log == "") {
+                echo "In";
+            }else{
+                echo "Out";
+            }?></a>
+            <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
+
+    <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
 
  <div class="woman">
    <a href="man.php"><h1>MAN SECTION</h1></a>
@@ -68,7 +79,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.1)" id="3.1" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.001)" id="3.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -88,7 +98,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.2)" id="3.2" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.002)" id="3.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -108,7 +117,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.3)" id="3.3" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.003)" id="3.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -127,7 +135,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.4)" id="3.4" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.004)" id="3.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -146,7 +153,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.5)" id="3.5" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.005)" id="3.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -165,7 +171,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.6)" id="3.6" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.006)" id="3.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -184,7 +189,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.7)" id="3.7" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.007)" id="3.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -203,7 +207,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.8)" id="3.8" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.008)" id="3.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -223,7 +226,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.9)" id="3.9" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.009)" id="3.009" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -242,7 +244,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.11)" id="3.11" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.011)" id="3.011" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -261,7 +262,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.12)" id="3.12" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.012)" id="3.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -280,7 +280,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.13)" id="3.13" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.013)" id="3.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -299,7 +298,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.14)" id="3.14" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.014)" id="3.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -318,7 +316,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.15)" id="3.15" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.015)" id="3.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -337,7 +334,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.16)" id="3.16" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.016)" id="3.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -356,7 +352,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.17)" id="3.17" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.017)" id="3.017" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -375,7 +370,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.18)" id="3.18" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.018)" id="3.018" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -394,7 +388,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.19)" id="3.19" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.019)" id="3.019" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
@@ -413,7 +406,6 @@ Basic Fit T-shirt">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="fav(3.21)" id="3.21" class="favorite-button"><img src="../images/Front/favorite.png" alt="favorite"></button>
                     <button onclick="cart(3.021)" id="3.021" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
                 </div>
             </div>
