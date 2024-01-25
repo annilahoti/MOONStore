@@ -1,38 +1,51 @@
 <?php
 include('user.php');
-$usersArray = [];
+include('userRepository.php');
 
-$user1 = new User(1,"Anila","Hoti","anilahoti@gmail.com","anila123","admin");
-$user2 = new User(2,"Endrit","Musaj","endritmusaj@gmail.com","endrit123","user");
-$user3 = new User(3,"Arbison","Krasniqi","arbisonkrasniqi@gmail.com","arbison123","user");
-$user4 = new User(4,"Arbresha","Hoxha","arbreshahoxha@gmail.com","arbresha123","user");
 
-$usersArray[] = $user1;
-$usersArray[] = $user2;
-$usersArray[] = $user3;
-$usersArray[] = $user4;
-$loggedIn = false;
+if(isset($_POST["loginbtn"])){
+    if(empty($_POST["email"]) || empty($_POST["password"])){
+        echo '<script>alert("Please fill in all the fields");</script>';
+    }
+    else{
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $users = [];
 
-    foreach($usersArray as $user){
-        if($_POST['email']==$user->getEmail() && $_POST['password']==$user->getPassword()){
-            session_start();
-            $_SESSION['name'] = $user->getName();
-            $_SESSION['email']= $user->getEmail();
-            $_SESSION['role'] = $user->getRole();
-            $_SESSION['loginTime'] = date("H:i:s");
-            $loggedIn = true;
-            break;
-        } 
+        $usersQuery = "SELECT * FROM user";
+        $usersResult = mysqli_query($conn, $usersQuery);
+
+
+        while($row = mysqli_fetch_assoc($usersResult)){
+            $user = new User(
+                $row['id'],
+                $row['name'],
+                $row['surname'],
+                $row['email'],
+                $row['password'],
+                $row['roli']
+            );
+            $users[]=$user;
         }
-
-if($loggedIn){
-    header("Location: home.php");
-    exit();
+    $i=0;
+    foreach($users as $user){
+       if($user->getEmail()==$email && $user->getPassword()==$password){
+            session_start();
+            $_SESSION["email"] = $user->getEmail();
+            $_SESSION["role"] = $user->getRole();
+            $_SESSION["loginTime"]= date("h:i:s");
+            header("Location: home.php");
+            exit();
+        }
+        else{
+            $i++;
+            if($i==sizeof($users)){
+                echo "<script>alert('Incorrect email or password!');</script>";
+                exit();
+            }
+        }
+    }
+    }
 }
-else{
-    header("Location: login.php");
-    exit();
-}
-
 
 ?>

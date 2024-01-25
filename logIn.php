@@ -36,7 +36,7 @@
             <a href="ContactUs.php">Contact Us</a>
             <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
             <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
-            <a href="logout.php">Log <?php if ($log == "") {
+            <a href="logout.php" style="cursor: pointer; border-bottom: 3px solid burlywood;">Log <?php if ($log == "") {
                 echo "In";
             }else{
                 echo "Out";
@@ -57,7 +57,7 @@
             <form class="form" onsubmit="return validateForm1()" method="POST" action="loginController.php">
                 <input type="email" id="login.email" name="email" placeholder="Email" required/>
                 <input type="password" id="login.password" name="password" placeholder="Password" required/>
-                <button type="submit" id="signup" name="loginbtn" value="Login">LOG IN</button>
+                <button type="submit" id="login" name="loginbtn" value="Login">LOG IN</button>
             </form>
             <footer>If you dont have an account, sign up <a href="signUp.php">here</a></footer>
         </div>

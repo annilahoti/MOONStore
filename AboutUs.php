@@ -33,7 +33,7 @@
 
 <div class="nav">
             <a href="home.php">Home</a>
-            <a href="AboutUs.php">About Us</a>
+            <a href="AboutUs.php" style="cursor: pointer; border-bottom: 3px solid burlywood;">About Us</a>
             <a href="ContactUs.php">Contact Us</a>
             <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
             <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>

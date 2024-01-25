@@ -9,7 +9,6 @@ class Product{
     private $section;
     private $quantity;
     private $cartId;
-
     private $new;
     function __construct($id,$name,$source,$price,$category,$section,$quantity,$cartId,$new){
         $this->id = $id;    

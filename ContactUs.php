@@ -15,29 +15,27 @@
         <a href="home.php"><img src="images/Front/moon.jpg" alt="logo" id="logo"></a>
         </div>
         <?php 
-        $hide="";
-        $log="";
-        if(!isset($_SESSION['email'])){
-            $log="";
-            header("location:login.php");
-        if($_SESSION['role'] == "admin"){
-          $hide = "";
-        }
-        else{
-          $log = "logout";
-          $hide = "hide";
-        }
-      }
-      else{
-        $log="logout";
-        $hide = "hide";
-      }
+       $hide="";
+       $log="";
+       if(isset($_SESSION['email'])){
+           $log="logout";
+       if($_SESSION['role'] == "admin"){
+         $hide = "";
+       }
+       else{
+         $hide = "hide";
+       }
+     }
+     else{
+       $log="";
+       $hide = "hide";
+     }
         ?>
 
 <div class="nav">
             <a href="home.php">Home</a>
             <a href="AboutUs.php">About Us</a>
-            <a href="ContactUs.php">Contact Us</a>
+            <a href="ContactUs.php" style="cursor: pointer; border-bottom: 3px solid burlywood;">Contact Us</a>
             <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
             <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
             <a href="logout.php">Log <?php if ($log == "") {

@@ -37,7 +37,7 @@
             <a href="AboutUs.php">About Us</a>
             <a href="ContactUs.php">Contact Us</a>
             <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>
-            <a href="signUp.php"><img src="images/Front/user1.png" id="user"></a>
+            <a href="signUp.php" style="cursor: pointer; border-bottom: 3px solid burlywood;"><img src="images/Front/user1.png" id="user"></a>
             <a href="logout.php">Log <?php if ($log == "") {
                 echo "In";
             }else{

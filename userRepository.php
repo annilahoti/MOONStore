@@ -22,7 +22,7 @@ class UserRepository{
 
         $sql = "INSERT INTO user (id,name,surname,email,password,roli) VALUES (?,?,?,?,?,?)";
 
-        $conn->select_db("moon");
+       
         $statement = $conn->prepare($sql);
 
         $statement->execute([$id,$name,$surname,$email,$password,$roli]);
@@ -34,19 +34,19 @@ class UserRepository{
         $sql = "SELECT * FROM user";
 
         $statement = $conn->query($sql);
-        $users = $statement->fetch_all();
-
+        $users = $statement->fetch_all(MYSQLI_ASSOC);
+     
         return $users;
     }
+    
 
     function getUserById($id){
         $conn = $this->connection;
 
-        $sql = "SELECT * FROM user WHERE id='$id";
+        $sql = "SELECT * FROM user WHERE id='$id'";
 
         $statement = $conn->query($sql);
-        $user = $statement->fetch();
-
+        $user = $statement->fetch_object();
         return $user;
     }
 
@@ -56,7 +56,7 @@ class UserRepository{
         $sql = "UPDATE user SET name=?, surname=?, email=?, password=? WHERE id=?";
 
         $statement = $conn->prepare($sql);
-        $statement->execute([$name,$surname,$email,$password]);
+        $statement->execute([$name,$surname,$email,$password,$id]);
 
         echo "<script>alert('Update was Successful);</script>";
     }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stilimet.css">
 
-    <title>Front page</title>
+    <title>Home page</title>
 </head>
 <body>
  
@@ -32,7 +32,7 @@
         ?>
 
 <div class="nav">
-            <a href="home.php">Home</a>
+            <a href="home.php" style="cursor: pointer; border-bottom: 3px solid burlywood;">Home</a>
             <a href="AboutUs.php">About Us</a>
             <a href="ContactUs.php">Contact Us</a>
             <a href="Dashboard.php" class="<?php echo $hide?>">Dashboard</a>

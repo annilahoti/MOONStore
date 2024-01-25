@@ -320,7 +320,7 @@
                     <option>L</option>
                     <option>XL</option>
                 </select>
-                <button onclick="cart(0.016)" id="6.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                <button onclick="cart(6.016)" id="6.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
             </div>
         </div>
 
