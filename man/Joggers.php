@@ -1,5 +1,9 @@
-<?php  session_start();
-include_once "../databaseConnection.php";
+<?php  
+session_start();
+if(isset($_SESSION["id"])){
+$userID=$_SESSION['id'];
+}
+include "../databaseConnection.php";
 ?>
 <html lang="en">
 <head>
@@ -65,9 +69,7 @@ include_once "../databaseConnection.php";
 
  <main>
         <div class="products">
-
         <?php
-
 
 $sql = "SELECT * FROM product WHERE category = 'Joggers' AND section = 'Man'";
 $result = $conn->query($sql);
@@ -76,32 +78,35 @@ if ($result->num_rows > 0) {
    
     while($row = $result->fetch_assoc()) {?>
 
-
+<?php
+    $cartID =$row['cartId']; 
+    $productID = $row['id'];
+?>
 <div class="produkti">
-                <div><img src="<?php echo ''.$row["source"].''?>" alt="<?php echo''.$row["name"].'' ?>" title="<?php if ($row["new"]==1) {
-                    echo 'New Arrival:
-'.$row["name"].'';
-                }else{
-                    echo ''.$row["name"].'';
-                } ?>">
+                <div><img src="<?php echo ''.$row["source"].''?>" alt="<?php echo ''.$row["name"].''?>" title="<?php echo ''.$row["name"].''?>">
                     <h3><?php echo ''. $row["name"].''?></h3>
-                    <p>Price: <?php echo ''.$row["price"].''?>€</p>
+                    <p>Price: <?php echo ''.$row["price"].'€'?></p>
                 </div>
                 <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <?php if ($row["quantity"]==0) {
-                        echo '<h4 style="color:red">OUT OF STOCK</h4>';
-                    }else{?>
-                    <button onclick="cart(<?php echo ''.$row['cartId'].'' ?>)" id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                    <?php }?>
+                    <form method="post" action="../addToCart.php">
+                    <input type="hidden" name="userID" value="<?php if(isset($_SESSION["id"])){echo ''.$userID.''; } ?>">
+                    <input type="hidden" name="productID" value="<?php echo ''.$productID.''?> ">
+                    <input type="hidden" name="cartID" value="<?php echo ''.$cartID.''?> ">
+
+                    <?php
+       if(isset($_SESSION["id"])){             
+$sql = "SELECT * FROM user_product_cart WHERE userID=? AND productID=?";
+$statement = $conn->prepare($sql);
+$statement->execute([$userID,$productID]);
+$result2= $statement->get_result();
+       }
+?>
+                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart">
+                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){ ?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php }}else{?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } ?></button>
+                    </form>
                 </div>
             </div>
+
 
 <?php    }
 } else {
@@ -111,12 +116,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-
-        
-
-        </div>
-
- </main>
+    </main>
 
  <footer>
         <div class="footeri">
