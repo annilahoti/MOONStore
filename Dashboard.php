@@ -137,11 +137,12 @@
                     <td><a href='deleteProduct.php?id=$product[id]'>Delete</a></td>
                     
                 </tr>    
-                ";
+               ";
             }
     
         ?>
     </table>
+    <br><br>
         </main>       
 </body>
 <?php include 'footer.php'; ?>

@@ -1,4 +1,11 @@
-<?php  session_start();?>
+<?php  
+session_start();
+if(isset($_SESSION["id"])){
+$userID=$_SESSION['id'];
+}
+include "../databaseConnection.php";
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,370 +67,55 @@
     <a href="Jackets&Coats.php">Jackets/Coats</a>
 </div>
  </div>
-
-    <main>
+ <main>
         <div class="products">
+        <?php
 
+$sql = "SELECT * FROM product WHERE category = 'Dresses' AND section = 'Woman'";
+$result = $conn->query($sql);
 
-            <div class="produkti">            
-            <div><img src="../images/Woman/Dresses/AnimalPrintMidiDress.jpg" alt="Animal Print Midi Dress" title="Animal Print Midi Dress">
-            <h3>Animal Print Midi Dress</h3>
-            <p>Price: 35.99€</p></div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.001)" id="7.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-            </div>
+if ($result->num_rows > 0) {
+   
+    while($row = $result->fetch_assoc()) {?>
 
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/GreyLongKnitDress.jpg" alt="Grey Long Knit Dress">
-                <h3>Grey Long Knit Dress</h3>
-                <p>Price: 30.00€</p>
+<?php
+    $cartID =$row['cartId']; 
+    $productID = $row['id'];
+?>
+<div class="produkti">
+                <div><img src="<?php echo ''.$row["source"].''?>" alt="<?php echo ''.$row["name"].''?>" title="<?php echo ''.$row["name"].''?>">
+                    <h3><?php echo ''. $row["name"].''?></h3>
+                    <p>Price: <?php echo ''.$row["price"].'€'?></p>
                 </div>
                 <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(7.002)" id="7.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                    <form method="post" action="../addToCart.php">
+                    <input type="hidden" name="userID" value="<?php if(isset($_SESSION["id"])){echo ''.$userID.''; } ?>">
+                    <input type="hidden" name="productID" value="<?php echo ''.$productID.''?> ">
+                    <input type="hidden" name="cartID" value="<?php echo ''.$cartID.''?> ">
+
+                    <?php
+       if(isset($_SESSION["id"])){             
+$sql = "SELECT * FROM user_product_cart WHERE userID=? AND productID=?";
+$statement = $conn->prepare($sql);
+$statement->execute([$userID,$productID]);
+$result2= $statement->get_result();
+       }
+?>
+                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart">
+                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){ ?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php }}else{?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } ?></button>
+                    </form>
                 </div>
             </div>
-    
-            <div class="produkti">                
-            <div><img src="../images/Woman/Dresses/MinkLongFittedDress.jpg" alt="Mink Long Fitted Dress" title="Mink Long Fitted Dress">
-            <h3>Mink Long Fitted Dress</h3>
-            <p>Price: 32.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.003)" id="7.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
 
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/BlackLongFittedDress.jpg" alt="Black Long Fitted Dress" title="Black Lomg Fitted Dress">
-            <h3>Black Long Fitted Dress</h3>
-            <p>Price: 32.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.004)" id="7.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
+<?php    }
+} else {
+    echo "Nuk ka produkte në bazën e të dhënave.";
+}
 
+$conn->close();
+?>
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/GreyLongFittedDress.jpg" alt="Grey Long Fitted Dress" title="Grey long Fitted Dress">
-            <h3>Grey Long Fitted Dress</h3>
-            <p>Price: 32.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.005)" id="7.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/BlueLongKnitDress.jpg" alt="Blue Long Knit Dress" title="Blue Long Knit Dress">
-                <h3>Blue Long Knit Dress</h3>
-                <p>Price: 30.00€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                <button onclick="cart(7.006)" id="7.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/BeigeShortKnitDress.jpg" alt="Beige Short Knit Dress" title="Beige Short Knit Dress">
-            <h3>Beige Short Knit Dress</h3>
-            <p>Price: 25.00€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.007)" id="7.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/BlackShortKnitDress.jpg" alt="Black Short Knit Dress" title="Black Short Knit Dress">
-            <h3>Black Short Knit Dress</h3>
-            <p>Price: 25.00€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.008)" id="7.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/PinkShadesTulleDress.jpg" alt="Pink Shades Tulle Dress" title="Pink Shades Tulle Dress">
-            <h3>Pink Shades Tulle Dress</h3>
-            <p>Price: 22.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.009)" id="7.009" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/GreenShadesTulleDress.jpg" alt="Green Shades Tulle Dress" title="Green Shades Tulle Dress">
-            <h3>Green Shades Tulle Dress</h3>
-            <p>Price: 22.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.011)" id="7.011" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/PurpleShadesTulleDress.jpg" alt="Purple Shades Tulle Dress" title="Purple Shades Tulle Dress">
-            <h3>Purple Shades Tulle Dress</h3>
-            <p>Price: 22.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.012)" id="7.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/MidiDresswithLeopardPrint.jpg" alt="Leopard-Print Midi Dress" title="Leopard-Print Midi Dress">
-            <h3>Leopard-Print Midi Dress</h3>
-            <p>Price: 19.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.013)" id="7.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/SparklyBlackDress.jpg" alt="Sparkly Black Dress" title="Sparkly Black Dress">
-            <h3>Sparkly Black Dress</h3>
-            <p>Price: 49.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.014)" id="7.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/SparklyPurpleDress.jpg" alt="SparklyPurpleDress" title="Sparkly Purple Dress">
-            <h3>Sparkly Purple Dress</h3>
-            <p>Price: 49.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.015)" id="7.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/SparklyGreyDress.jpg" alt="SparklyGreyDress" title="Sparkly Grey Dress">
-            <h3>Sparkly Grey Dress</h3>
-            <p>Price: 49.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.016)" id="7.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/LongAsymmetricDress.jpg" alt="Long Asymmetric Dress" title="Long Asymmetric Dress">
-            <h3>Long Asymmetric Dress</h3>
-            <p>Price: 25.00€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.017)" id="7.017" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/LongAsymmetricTulleDress.jpg" alt="Long Asymmetric Tulle Dress" title="Long Asymmetric Tulle Dress">
-            <h3>Long Tulle Dress</h3>
-            <p>Price: 29.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.018)" id="7.018" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/AsymmetricDenimMidiDress.jpg" alt="Asymmetric Denim Midi Dress" alt="Asymmetric Denim Midi Dress">
-            <h3>Denim Midi Dress</h3>
-            <p>Price: 32.90€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.019)" id="7.019" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/LilacLongDressWithSlit.jpg" alt="Lilac Long Dress With Slit" title="Lilac Long Dress With Slit">
-            <h3>Lilac Long Dress</h3>
-            <p>Price: 20.00€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.021)" id="7.021" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Dresses/Off-The-Shoulder Midi Dress.jpg" alt="Off-The-Shoulder Midi Dress" title="Off-The-Shoulder Midi Dress">
-            <h3>Off-The-Shoulder Dress</h3>
-            <p>Price: 25.90€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(7.022)" id="7.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-
-        </div>
     </main>
     <footer>
         <div class="footeri">

@@ -1,6 +1,11 @@
-<?php  session_start();
-
+<?php  
+session_start();
+if(isset($_SESSION["id"])){
+$userID=$_SESSION['id'];
+}
+include "../databaseConnection.php";
 ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -65,353 +70,56 @@
     <a href="Jackets&Coats.php">Jackets/Coats</a>
 </div>
  </div>
-
-    <main>
+ <main>
         <div class="products">
+        <?php
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/StraightJeans MidWaist.jpg" alt="Straight Jeans Mid-Waist" title="Straight Jeans Mid-Waist">
-            <h3>Straight Jeans Mid-Waist</h3>
-            <p>Price: 24.99€</p></div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.001)" id="8.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
+$sql = "SELECT * FROM product WHERE category = 'Jeans' AND section = 'Woman'";
+$result = $conn->query($sql);
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/BaggyCarpenterJeans.jpg" alt="Baggy Carpenter Jeans" title="Baggy Carpenter Jeans">
-            <h3>Baggy Carpenter Jeans</h3>
-            <p>Price: 29.90€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.002)" id="8.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
+if ($result->num_rows > 0) {
+   
+    while($row = $result->fetch_assoc()) {?>
 
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/FlaredLeatherTrousers.jpg" alt="Flared Leather Trousers" title=""Flared Leather Trousers>
-            <h3>Flared Leather Trousers</h3>
-            <p>Price: 21.99€</p></div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.003)" id="8.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/cargomultipockets.jpg" alt="cargo multi-pockets" title="Cargo Multi-Pockets">
-            <h3>Beige Multi-Pockets Cargo</h3>
-            <p>Price: 35.50€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.004)" id="8.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/Wide-leg corduroy trouesers.jpg" alt="Wide-Leg trousers" title="Wide-Leg trouesers">
-            <h3>Wide-Leg Corduroy Trousers</h3>
-            <p>Price: 17.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.005)" id="8.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/FlaredHigh-waist jeans.jpg" alt="Flared High-Waist Jeans" title="Flared High-waist Jeans">
-                <h3>Flared High-waist Jeans</h3>
-                <p>Price: 20.00€</p>
+<?php
+    $cartID =$row['cartId']; 
+    $productID = $row['id'];
+?>
+<div class="produkti">
+                <div><img src="<?php echo ''.$row["source"].''?>" alt="<?php echo ''.$row["name"].''?>" title="<?php echo ''.$row["name"].''?>">
+                    <h3><?php echo ''. $row["name"].''?></h3>
+                    <p>Price: <?php echo ''.$row["price"].'€'?></p>
                 </div>
                 <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(8.006)" id="8.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                    <form method="post" action="../addToCart.php">
+                    <input type="hidden" name="userID" value="<?php if(isset($_SESSION["id"])){echo ''.$userID.''; } ?>">
+                    <input type="hidden" name="productID" value="<?php echo ''.$productID.''?> ">
+                    <input type="hidden" name="cartID" value="<?php echo ''.$cartID.''?> ">
+
+                    <?php
+       if(isset($_SESSION["id"])){             
+$sql = "SELECT * FROM user_product_cart WHERE userID=? AND productID=?";
+$statement = $conn->prepare($sql);
+$statement->execute([$userID,$productID]);
+$result2= $statement->get_result();
+       }
+?>
+                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart">
+                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){ ?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php }}else{?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } ?></button>
+                    </form>
                 </div>
             </div>
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/SmartTrousersGrey.jpg" alt="Grey Smart Trousers" title="Grey Smart Trousers">
-            <h3>Grey Smart Trousers</h3>
-            <p>Price: 25.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.007)" id="8.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
 
+<?php    }
+} else {
+    echo "Nuk ka produkte në bazën e të dhënave.";
+}
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/KhakiParachuteTrousers.jpg" alt="Khaki Parachute Trousers" title="Khaki Parachute Trousers">
-            <h3>Khaki Parachute Trousers</h3>
-            <p>Price: 21.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.008)" id="8.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
+$conn->close();
+?>
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/StoneParachuteTrousers.jpg" alt="Stone Parachute Trousers" title="Stone Parachute Trousers">
-            <h3>Stone Parachute Trousers</h3>
-            <p>Price: 21.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.009)" id="8.009" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/BlueCargoMulti-Pockets.jpg" alt="Blue Multi-Pockets Cargo" title="Blue Multi-Pockets Cargo">
-            <h3>Blue Multi-Pockets Cargo</h3>
-            <p>Price: 25.00€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.011)" id="8.011" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/oversizedStraightLegJeans.jpg" alt="Oversized Straight-Leg Jeans" title="Oversizd Straight-Leg Jeans">
-            <h3>Oversized Straight-Leg Jeans</h3>
-            <p>Price: 20.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.012)" id="8.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/SmartTrousersBlack.jpg" alt="Black Smart Trousers" title="Black Smart Trousers">
-                <h3>Black Smart Trousers</h3>
-                <p>Price: 25.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                <button onclick="cart(8.013)" id="8.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/BlackOversizeSkaterJeans.jpg" alt="Black Oversize Skater Jeans" title="Black Oversized Skater Jeans">
-            <h3>Black Oversize Skater Jeans</h3>
-            <p>Price: 25.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.014)" id="8.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/BlueOversizeSkaterJeans.jpg" alt="Blue Oversize Skater Jeans" title="Blue Oversizd Skater Jeans">
-            <h3>Blue Oversize Skater Jeans</h3>
-            <p>Price: 25.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.015)" id="8.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/Pink metalic trousers.jpg" alt="Pink Metalic Trousers" title="Pink Metalic Trousers">
-                <h3>Pink Metalic Trousers</h3>
-                <p>Price: 35.00€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(8.016)" id="8.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/LowWaist wideleg baggy jeans.jpg" alt="Low-Waist baggy Jeans" title="Low-Waist Baggy Jeans">
-            <h3>Low-Waist Baggy Jeans</h3>
-            <p>Price: 22.50€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.017)" id="8.017" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/GreyLowwaist bagy jeans.jpg" alt="Grey Low-Waist baggy Jeans" title="Grey Low-Waist Baggy Jeans">
-            <h3>Grey Low-Waist Baggy Jeans</h3>
-            <p>Price: 22.50€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.018)" id="8.018" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-            
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/BurgundyLeatherTrousers.jpg" alt="BurgundyLeatherTrousers" title="Burgundy Leather Trousers">
-            <h3>Burgundy Leather Trousers</h3>
-            <p>Price: 25.00€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.019)" id="8.019" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/BluePinstripeTrousers.jpg" alt="Blue Pinstripe Trousers" title="Blue Pinstripe Trousers">
-            <h3>Blue Pinstripe Trousers</h3>
-            <p>Price: 20.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.021)" id="8.021" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti"> 
-            <div><img src="../images/Woman/Jeans/GreyPinstripeTrousers.jpg" alt="Grey Pinstripe Trousers" title="Grey Pinstripe Trousers">
-            <h3>Grey Pinstripe Trousers</h3>
-            <p>Price: 20.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.022)" id="8.022" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-        </div>
-            </main>
+    </main> 
             <footer>
         <div class="footeri">
             <div class="logo2">

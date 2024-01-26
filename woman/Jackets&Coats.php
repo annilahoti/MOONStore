@@ -1,4 +1,11 @@
-<?php  session_start();?>
+<?php  
+session_start();
+if(isset($_SESSION["id"])){
+$userID=$_SESSION['id'];
+}
+include "../databaseConnection.php";
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,355 +68,56 @@
     <a href="Jackets&Coats.php" style="background-color: brown; color: white;">Jackets/Coats</a>
 </div>
  </div>
-
-    <main>
+ <main>
         <div class="products">
+        <?php
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/darkblueQuiltedJacket.jpg" alt="Dark blue Quilted Jacket" title="Dark Blue Quilted Jacket">
-                <h3>Dark Blue Quilted Jacket</h3>
-                <p>Price: 59.99€</p>
+$sql = "SELECT * FROM product WHERE category = 'Jackets' AND section = 'Woman'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+   
+    while($row = $result->fetch_assoc()) {?>
+
+<?php
+    $cartID =$row['cartId']; 
+    $productID = $row['id'];
+?>
+<div class="produkti">
+                <div><img src="<?php echo ''.$row["source"].''?>" alt="<?php echo ''.$row["name"].''?>" title="<?php echo ''.$row["name"].''?>">
+                    <h3><?php echo ''. $row["name"].''?></h3>
+                    <p>Price: <?php echo ''.$row["price"].'€'?></p>
                 </div>
                 <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.001)" id="10.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
-            
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/fluffyCoat.jpg" alt="fluffyCoat" title="Fluffy Coat">
-                <h3>Fluffy White Coat</h3>
-                <p>Price: 29.95€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.002)" id="10.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-            
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/Double-facedCoat.jpg" alt="Double-Faced Coat" title="Double-Faced Coat"> 
-                <h3>Double-Faced Coat</h3>
-                <p>Price: 49.99€</p>
-                </div>    
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.003)" id="10.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
-            <div class="produkti">            
-            <div><img src="../images/Woman/Jackets/ShearlingJacketWithPrint.jpg" alt="Shearling Jacket With Print" title="Shearling Jacket With Print">
-                <h3>Shearling Jacket With Print</h3>
-                <p>Price:49.59€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.004)" id="10.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/LongOversizeTextureCoat.jpg" alt="Long Oversized Coat" title="Long Oversizd Coat">
-                <h3>Long Oversized Coat</h3>
-                <p>Price: 65.00€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.005)" id="10.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/darkCherryLongTextureCoat.jpg" alt="Dark Cherry Long Coat" title="Dark Cherry Long Coat">
-                <h3>Dark-Cherry Long Coat</h3>
-                <p>Price: 70.00€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.006)" id="10.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/LeatherDouble-FacedJacket.jpg" alt="Leather Double-Faced Coat" title="Leather Double-Faced Coat">
-                <h3>Leather Double-Faced Jacket</h3>
-                <p>Price: 35.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.007)" id="10.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
-            <div class="produkti">            
-            <div><img src="../images/Woman/Jackets/Jacket with faux Shearling interior.jpg" alt="Jacket with faux shearling interior" title="Jacket With Faux Shealing Interior">
-                <h3>Beige Jacket</h3>
-                <p>Price: 49.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.008)" id="10.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                    <form method="post" action="../addToCart.php">
+                    <input type="hidden" name="userID" value="<?php if(isset($_SESSION["id"])){echo ''.$userID.''; } ?>">
+                    <input type="hidden" name="productID" value="<?php echo ''.$productID.''?> ">
+                    <input type="hidden" name="cartID" value="<?php echo ''.$cartID.''?> ">
+
+                    <?php
+       if(isset($_SESSION["id"])){             
+$sql = "SELECT * FROM user_product_cart WHERE userID=? AND productID=?";
+$statement = $conn->prepare($sql);
+$statement->execute([$userID,$productID]);
+$result2= $statement->get_result();
+       }
+?>
+                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart">
+                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){ ?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php }}else{?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } ?></button>
+                    </form>
                 </div>
             </div>
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/GreenQuiltedJacked.jpg" alt="Green Quilted Jacket" title="Green Quilted Jacket">
-                <h3>Green Quilted Jacked</h3>
-                <p>Price: 45.95€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.009)" id="10.009" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
 
-            <div class="produkti">
-             <div><img src="../images/Woman/Jackets/MaroonLeatherTrenchCoat.jpg" alt="Maroon Leather Trench Coat" title="Maroon Leather Trench Coat">
-                <h3>Maroon Leather Trench Coat</h3>
-                <p>Price: 67.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.011)" id="10.011" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
+<?php    }
+} else {
+    echo "Nuk ka produkte në bazën e të dhënave.";
+}
 
-            <div class="produkti">            
-            <div><img src="../images/Woman/Jackets/FauxLeatherTrenchCoat.jpg" alt="Black Leather Trench Coat" title="Black Leather Trench Coat">
-                <h3>Black Leather Trench Coat</h3>
-                <p>Price: 67.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.012)" id="10.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
+$conn->close();
+?>
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/Longpufferjacket with hood.jpg" alt="Black Long Puffer Jacket">
-            <h3>Black Long Puffer Jacket</h3>
-            <p>Price: 49.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.013)" id="10.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/whitelongpufferjacketwith hood.jpg" alt="White long puffer jacket" title="White Long Puffer Jacket">
-                <h3>Black Long Puffer Jacket</h3>
-                <p>Price: 49.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                    <button onclick="cart(10.014)" id="10.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/GreyLeather Trenchcoat.jpg" alt="Grey Leather Trench coat" title="Grey Leather Trench Coat">
-            <h3>Grey Leather Trench Coat</h3>
-            <p>Price: 67.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.015)" id="10.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/KhakiBeltedTrenchCoat.jpg" alt="Khaki Belted Trench Coat" title="Khaki Belted Trench Coat">
-            <h3>Khaki Belted Trench Coat</h3>
-            <p>Price: 35.55€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.016)" id="10.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">    
-            <div><img src="../images/Woman/Jackets/longnavyblueraincoat.jpg" alt="Long Navy Blue RainCoat" title="Long Navy Blue Rain Coat">
-                <h3>Long Navy Blue Rain Coat</h3>
-                <p>Price: 35.00€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                <button onclick="cart(10.017)" id="10.017" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-    
-    
-                
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/SandBeltedTrenchCoat.jpg" alt="Sand Belted Trench Coat" title="Sand Belted Trench Coat">
-            <h3>Sand Belted Trench Coat</h3>
-            <p>Price: 35.55€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.018)" id="10.018" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/OversizedRaincoat.jpg" alt="Oversized Rain Coat" title="Oversizd Rain Coat">
-            <h3>Oversizd Rain Coat</h3>
-            <p>Price: 23.99€</p></div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.019)" id="10.019" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/longdenimtrenchcoat.jpg" alt="Long Denim Trench Coat" title="Long Denim Trench Coat">
-            <h3>Long Denim Trench Coat</h3>
-            <p>Price: 42.50€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.021)" id="10.021" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/longpuffergilet.jpg" alt="Long Puffer Gilet" title="Long Puffer Gilet">
-            <h3>Long Puffer Gilet</h3>
-            <p>Price: 39.99€</p></div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(10.022)" id="10.022" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-    
-        </div>
-    </main>
+    </main> 
     <footer>
         <div class="footeri">
             <div class="logo2">

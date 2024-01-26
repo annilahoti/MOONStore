@@ -223,6 +223,10 @@ footer>div{
         display: flex;
         flex-wrap: wrap;
     }
+    .opsionet{
+        display: flex;
+        flex-direction: column;
+    }
   }
   
   
@@ -300,6 +304,8 @@ footer>div{
     font-size: x-large;
     justify-content: space-around;
     padding: 5px;
+    flex-wrap: wrap;
+
   
 }
 

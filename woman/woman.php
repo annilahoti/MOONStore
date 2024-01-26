@@ -1,4 +1,11 @@
-<?php  session_start();?>
+<?php  
+session_start();
+if(isset($_SESSION["id"])){
+$userID=$_SESSION['id'];
+}
+include "../databaseConnection.php";
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,321 +68,56 @@
     <a href="Jackets&Coats.php">Jackets/Coats</a>
 </div>
  </div>
-
  <main>
         <div class="products">
+        <?php
 
-        <div class="produkti">
-            <div><img src="../images/Woman/Jackets/darkblueQuiltedJacket.jpg" alt="Dark blue Quilted Jacket" title="Dark Blue Quilted Jacket">
-                <h3>Dark Blue Quilted Jacket</h3>
-                <p>Price: 59.99€</p>
+$sql = "SELECT * FROM product WHERE new = true AND section = 'Woman'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+   
+    while($row = $result->fetch_assoc()) {?>
+
+<?php
+    $cartID =$row['cartId']; 
+    $productID = $row['id'];
+?>
+<div class="produkti">
+                <div><img src="<?php echo ''.$row["source"].''?>" alt="<?php echo ''.$row["name"].''?>" title="<?php echo ''.$row["name"].''?>">
+                    <h3><?php echo ''. $row["name"].''?></h3>
+                    <p>Price: <?php echo ''.$row["price"].'€'?></p>
                 </div>
                 <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.001)" id="10.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
+                    <form method="post" action="../addToCart.php">
+                    <input type="hidden" name="userID" value="<?php if(isset($_SESSION["id"])){echo ''.$userID.''; } ?>">
+                    <input type="hidden" name="productID" value="<?php echo ''.$productID.''?> ">
+                    <input type="hidden" name="cartID" value="<?php echo ''.$cartID.''?> ">
 
-            <div class="produkti">            
-            <div><img src="../images/Woman/Jackets/ShearlingJacketWithPrint.jpg" alt="Shearling Jacket With Print" title="Shearling Jacket With Print">
-                <h3>Shearling Jacket With Print</h3>
-                <p>Price:49.59€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.004)" id="10.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                    <?php
+       if(isset($_SESSION["id"])){             
+$sql = "SELECT * FROM user_product_cart WHERE userID=? AND productID=?";
+$statement = $conn->prepare($sql);
+$statement->execute([$userID,$productID]);
+$result2= $statement->get_result();
+       }
+?>
+                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart">
+                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){ ?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php }}else{?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } ?></button>
+                    </form>
                 </div>
             </div>
 
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/darkCherryLongTextureCoat.jpg" alt="Dark Cherry Long Coat" title="Dark Cherry Long Coat">
-                <h3>Dark-Cherry Long Coat</h3>
-                <p>Price: 70.00€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.006)" id="10.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
+<?php    }
+} else {
+    echo "Nuk ka produkte në bazën e të dhënave.";
+}
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/Double-facedCoat.jpg" alt="Double-Faced Coat" title="Double-Faced Coat"> 
-                <h3>Double-Faced Coat</h3>
-                <p>Price: 49.99€</p>
-                </div>    
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.003)" id="10.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
+$conn->close();
+?>
 
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/LeatherDouble-FacedJacket.jpg" alt="Leather Double-Faced Coat" title="Leather Double-Faced Coat">
-                <h3>Leather Double-Faced Jacket</h3>
-                <p>Price: 35.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.007)" id="10.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jackets/LongOversizeTextureCoat.jpg" alt="Long Oversized Coat" title="Long Oversizd Coat">
-                <h3>Long Oversized Coat</h3>
-                <p>Price: 65.00€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.005)" id="10.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Tops/KnitSweaterWithAMaxiCollar.jpg" alt="Milky Knit Sweater" title="Milky Knit Sweater">
-                <h3>Milky Knit Sweater</h3>
-                <p>Price: 27.00€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(6.008)" id="6.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-            
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Jackets/fluffyCoat.jpg" alt="fluffyCoat" title="Fluffy Coat">
-                <h3>Fluffy White Coat</h3>
-                <p>Price: 29.95€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(10.002)" id="10.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Tops/CrochetSweater.jpg" alt="Crochet Sweater" title="Crochet Sweater">
-                <h3>Crochet Sweater</h3>
-                <p>Price: 25.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(6.006)" id="6.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-            
-            <div class="produkti">
-            <div><img src="../images/Woman/Tops/BardotKnitJumper.jpg" alt="Bardot Knit Jumper">
-            <h3>Bardot Knit Jumper</h3>
-            <p>Price: 23.95€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(6.003)" id="6.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Jeans/cargomultipockets.jpg" alt="cargo multi-pockets" title="Cargo Multi-Pockets">
-            <h3>Beige Multi-Pockets Cargo</h3>
-            <p>Price: 35.50€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.004)" id="8.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Jeans/FlaredLeatherTrousers.jpg" alt="Flared Leather Trousers" title=""Flared Leather Trousers>
-            <h3>Flared Leather Trousers</h3>
-            <p>Price: 21.99€</p></div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.003)" id="8.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Jeans/SmartTrousersBlack.jpg" alt="Black Smart Trousers" title="Black Smart Trousers">
-                <h3>Black Smart Trousers</h3>
-                <p>Price: 25.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                <button onclick="cart(8.013)" id="8.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-            
-
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/SmartTrousersGrey.jpg" alt="Grey Smart Trousers" title="Grey Smart Trousers">
-            <h3>Grey Smart Trousers</h3>
-            <p>Price: 25.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.007)" id="8.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Jeans/Wide-leg corduroy trouesers.jpg" alt="Wide-Leg trousers" title="Wide-Leg trouesers">
-            <h3>Wide-Leg Corduroy Trousers</h3>
-            <p>Price: 17.99€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.005)" id="8.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Jeans/FlaredHigh-waist jeans.jpg" alt="Flared High-Waist Jeans" title="Flared High-waist Jeans">
-                <h3>Flared High-waist Jeans</h3>
-                <p>Price: 20.00€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(8.006)" id="8.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            <div class="produkti">
-            <div><img src="../images/Woman/Jeans/BaggyCarpenterJeans.jpg" alt="Baggy Carpenter Jeans" title="Baggy Carpenter Jeans">
-            <h3>Baggy Carpenter Jeans</h3>
-            <p>Price: 29.90€</p>
-            </div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.002)" id="8.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-
-        <div class="produkti">
-            <div><img src="../images/Woman/Jeans/StraightJeans MidWaist.jpg" alt="Straight Jeans Mid-Waist" title="Straight Jeans Mid-Waist">
-            <h3>Straight Jeans Mid-Waist</h3>
-            <p>Price: 24.99€</p></div>
-            <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(8.001)" id="8.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-            </div>
-        </div>
-        </div>
- </main>
+    </main>
  <footer>
         <div class="footeri">
             <div class="logo2">

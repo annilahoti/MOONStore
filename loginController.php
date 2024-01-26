@@ -31,6 +31,9 @@ if(isset($_POST["loginbtn"])){
     foreach($users as $user){
        if($user->getEmail()==$email && $user->getPassword()==$password){
             session_start();
+            $_SESSION["id"] = $user->getId();
+            $_SESSION["name"] = $user->getName();
+            $_SESSION["surname"] = $user->getSurname();
             $_SESSION["email"] = $user->getEmail();
             $_SESSION["role"] = $user->getRole();
             $_SESSION["loginTime"]= date("h:i:s");
@@ -40,7 +43,7 @@ if(isset($_POST["loginbtn"])){
         else{
             $i++;
             if($i==sizeof($users)){
-                echo "<script>alert('Incorrect email or password!');</script>";
+                echo "Incorrect email or password!";
                 exit();
             }
         }
