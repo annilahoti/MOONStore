@@ -36,7 +36,7 @@
             $sql = "SELECT * FROM product";
     
             $statement = $conn->query($sql);
-            $products = $statement->fetch_all();
+            $products = $statement->fetch_all(MYSQLI_ASSOC);
     
             return $products;
         }

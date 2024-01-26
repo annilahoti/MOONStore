@@ -1,4 +1,6 @@
-<?php  session_start();?>
+<?php  session_start();
+include_once "../databaseConnection.php";
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -65,47 +67,26 @@
  <main>
         <div class="products">
 
-            <div class="produkti">
-                <div><img src="../images/Man/Jacket/Jacket-05.jpg" alt="Faux Shearling Jacket" title="New Arrival:
-Faux Shearling Jacket">
-                    <h3>Faux Shearling Jacket</h3>
-                    <p>Price: 35.99€</p>
-                    </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(1.005)" id="1.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
+        <?php
 
-            <div class="produkti">
-                <div><img src="../images/Man/Jacket/Jacket-03.jpg" alt="Lightweight Quilted Jacket" title="New Arrival:
- Lightweight Quilted Jacket">
-                    <h3>Lightweight Quilted Jacket</h3>
-                    <p>Price: 29.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(1.003)" id="1.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
 
-            <div class="produkti">
-                <div><img src="../images/Man/Jacket/Jacket-11.jpg" alt="Denim Jacket Fur Collar" title="New Arrival:
-Denim Jacket Fur Collar">
-                    <h3>Denim Jacket Fur Collar</h3>
-                    <p>Price: 39.99€</p>
+$sql = "SELECT * FROM product WHERE new = true AND section = 'Man'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+   
+    while($row = $result->fetch_assoc()) {?>
+
+
+<div class="produkti">
+                <div><img src="<?php echo ''.$row["source"].''?>" alt="<?php echo''.$row["name"].'' ?>" title="<?php if ($row["new"]==1) {
+                    echo 'New Arrival:
+'.$row["name"].'';
+                }else{
+                    echo ''.$row["name"].'';
+                } ?>">
+                    <h3><?php echo ''. $row["name"].''?></h3>
+                    <p>Price: <?php echo ''.$row["price"].''?>€</p>
                 </div>
                 <div class="shop">
                     <select id="masa">
@@ -115,230 +96,21 @@ Denim Jacket Fur Collar">
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="cart(1.012)" id="1.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                    <?php if ($row["quantity"]==0) {
+                        echo '<h4 style="color:red">OUT OF STOCK</h4>';
+                    }else{?>
+                    <button onclick="cart(<?php echo ''.$row['cartId'].'' ?>)" id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                    <?php }?>
                 </div>
             </div>
 
-            <div class="produkti">
-                <div><img src="../images/Man/Jacket/Jacket-07.jpg" alt="Double Faced Black Jackett" title="New Arrival:
-Double Faced Black Jackett">
-                    <h3>Double Faced Black Jacket</h3>
-                    <p>Price: 59.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(1.007)" id="1.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
+<?php    }
+} else {
+    echo "Nuk ka produkte në bazën e të dhënave.";
+}
 
-            <div class="produkti">
-                <div><img src="../images/Man/Jacket/Jacket-01.jpg" alt="Lightweight Quilted Jacket" title="New Arrival:
-Mint Lightweight Quilted Jacket">
-                    <h3>Lightweight Quilted Jacket</h3>
-                    <p>Price: 35.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(1.001)" id="1.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-                    
-
-            <div class="produkti">
-                <div><img src="../images/Man/T-shirts/Basic-fit-T-shirt-3.jpg" alt="Basic Fit T-shirt" title="New Arrival:
-Basic Fit T-shirt">
-                    <h3>Basic Fit T-shirt</h3>
-                    <p>Price: 7.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(3.003)" id="3.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            <div class="produkti">
-                <div><img src="../images/Man/T-shirts/Basic-fit-T-shirt-2.jpg" alt="Basic Fit T-shirt"title="New Arrival:
-Basic Fit T-shirt">
-                    <h3>Basic Fit T-shirt</h3>
-                    <p>Price: 7.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(3.002)" id="3.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            <div class="produkti">
-                <div><img src="../images/Man/T-shirts/Basic-fit-T-shirt-1.jpg" alt="Basic Fit T-shirt" title="New Arrival:
-Basic Fit T-shirt">
-                    <h3>Basic Fit T-shirt</h3>
-                    <p>Price: 7.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(3.001)" id="3.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            <div class="produkti">
-                <div>
-                    <img src="../images/Man/Jeans/Baggy-jeans-1.jpg" alt="Baggy Jeans" title="New Arrival:
-Baggy Jeans">
-                <h2>Baggy Jeans</h2>
-                <p>Price: 29.99€</p>
-                </div>
-
-                <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                </select>
-                <button onclick="cart(2.001)" id="2.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            <div class="produkti">
-                <div><img src="../images/Man/Jeans/Baggy-jeans-3.jpg" alt="Baggy Jeans" title="New Arrival:
-Baggy Jeans">
-                    <h2>Baggy Jeans</h2>
-                    <p>Price: 29.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(2.003)" id="2.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            <div class="produkti">
-                <div><img src="../images/Man/Jeans/Baggy-jeans-2.jpg" alt="Baggy Jeans" title="New Arrival:
-Baggy Jeans">
-                    <h2>Baggy Jeans</h2>
-                    <p>Price: 29.99€</p>
-                </div>
-                    <div class="shop">
-                        <select id="masa">
-                            <option>XS</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
-                        </select>
-                        <button onclick="cart(2.002)" id="2.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                    </div>
-                </div>
-
-                <div class="produkti">
-                    <div><img src="../images/Man/Joggers/Basic-hoodie-tracksuit-1.jpg" alt="Basic Hoodie Tracksuit" title="New Arrival:
-Basic Black Hoodie Tracksuit">
-                        <h3>Basic Hoodie Tracksuit</h3>
-                        <p>Price: 35.99€</p>
-                    </div>
-                    <div class="shop">
-                        <select id="masa">
-                            <option>XS</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
-                        </select>
-                        <button onclick="cart(4.005)" id="4.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                    </div>
-                </div>
-
-                <div class="produkti">
-                    <div><img src="../images/Man/Joggers/Basic-hoodie-tracksuit-2.jpg" alt="Basic Hoodie Tracksuit" title="New Arrival:
-Basic Gray Hoodie Tracksuit">
-                        <h3>Basic Hoodie Tracksuit</h3>
-                        <p>Price: 35.99€</p>
-                    </div>
-                    <div class="shop">
-                        <select id="masa">
-                            <option>XS</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
-                        </select>
-                        <button onclick="cart(4.006)" id="4.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                    </div>
-                </div>
-
-                <div class="produkti">
-                    <div><img src="../images/Man/Joggers/Ripped-jogger-jeans-1.jpg" alt="Ripped Jogger Jeans" title="New Arrival:
-Ripped Jogger Jeans">
-                        <h3>Ripped Jogger Jeans</h3>
-                        <p>Price: 24.99€</p>
-                    </div>
-                    <div class="shop">
-                        <select id="masa">
-                            <option>XS</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
-                        </select>
-                        <button onclick="cart(4.014)" id="4.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                    </div>
-                </div>
-
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Ripped-jogger-jeans-2.jpg" alt="Ripped Jogger Jeans" title="New Arrival:
-Ripped Jogger Jeans">
-                    <h3>Ripped Jogger Jeans</h3>
-                    <p>Price: 24.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.015)" id="4.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
+$conn->close();
+?>
 
         </div>
 

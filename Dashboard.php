@@ -81,7 +81,7 @@
                     <td>$user[surname]</td>
                     <td>$user[email]</td>
                     <td>$user[password]</td>
-                    <td><a href='editUser.php?id=($user[id])'>Edit</a></td>
+                    <td><a href='editUser.php?id=$user[id]'>Edit</a></td>
                     <td><a href='deleteUser.php?id=$user[id]'>Delete</a></td>
                     
                 </tr>    
@@ -91,6 +91,57 @@
         ?>
     </table>
     <br><br>
+    <br>
+
+    <table border="3" style="width: 50%; margin: auto; border: solid rgb(87, 51, 3); " >
+
+    <tr>
+            <th colspan="11" style="color: red;">PRODUCT TABLE</th>
+        </tr>
+
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>SOURCE</th>
+            <th>PRICE</th>
+            <th>CATEGORY</th>
+            <th>SECTION</th>
+            <th>QUANTITY</th>
+            <th>CARTID</th>
+            <th>NEW</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        
+        <?php
+            include_once 'productRepository.php';
+
+            $productRepository = new ProductRepository();
+
+            $products = $productRepository->getAllProducts();
+
+            foreach($products as $product){
+                echo
+                "
+                <tr>
+                    <td>$product[id]</td>
+                    <td>$product[name]</td>
+                    <td>$product[source]</td>
+                    <td>$product[price]</td>
+                    <td>$product[category]</td>
+                    <td>$product[section]</td>
+                    <td>$product[quantity]</td>
+                    <td>$product[cartId]</td>
+                    <td>$product[new]</td>
+                    <td><a href='editProduct.php?id=$product[id]'>Edit</a></td>
+                    <td><a href='deleteProduct.php?id=$product[id]'>Delete</a></td>
+                    
+                </tr>    
+                ";
+            }
+    
+        ?>
+    </table>
         </main>       
 </body>
 <?php include 'footer.php'; ?>

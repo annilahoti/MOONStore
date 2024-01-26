@@ -1,4 +1,6 @@
-<?php  session_start();?>
+<?php  session_start();
+include_once "../databaseConnection.php";
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -64,11 +66,26 @@
  <main>
         <div class="products">
 
+        <?php
 
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-cargo-joggers-1.jpg" alt="Basic Cargo Joggers" title="Basic Dark-Gray Cargo Joggers">
-                    <h3>Basic Cargo Joggers</h3>
-                    <p>Price: 27.99€</p>
+
+$sql = "SELECT * FROM product WHERE category = 'Joggers' AND section = 'Man'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+   
+    while($row = $result->fetch_assoc()) {?>
+
+
+<div class="produkti">
+                <div><img src="<?php echo ''.$row["source"].''?>" alt="<?php echo''.$row["name"].'' ?>" title="<?php if ($row["new"]==1) {
+                    echo 'New Arrival:
+'.$row["name"].'';
+                }else{
+                    echo ''.$row["name"].'';
+                } ?>">
+                    <h3><?php echo ''. $row["name"].''?></h3>
+                    <p>Price: <?php echo ''.$row["price"].''?>€</p>
                 </div>
                 <div class="shop">
                     <select id="masa">
@@ -78,267 +95,24 @@
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <button onclick="cart(4.001)" id="4.001" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                    <?php if ($row["quantity"]==0) {
+                        echo '<h4 style="color:red">OUT OF STOCK</h4>';
+                    }else{?>
+                    <button onclick="cart(<?php echo ''.$row['cartId'].'' ?>)" id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
+                    <?php }?>
                 </div>
             </div>
 
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-cargo-joggers-2.jpg" alt="Basic Cargo Joggers" title="Basic Black Cargo Joggers">
-                    <h3>Basic Cargo Joggers</h3>
-                    <p>Price: 27.99€</p>
-                </div>
-    
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.002)" id="4.002" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
+<?php    }
+} else {
+    echo "Nuk ka produkte në bazën e të dhënave.";
+}
 
-            
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-cargo-joggers-3.jpg" alt="Basic Cargo Joggers" title="Basic Brown Cargo Joggers">
-                    <h3>Basic Cargo Joggers</h3>
-                    <p>Price: 27.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.003)" id="4.003" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-cargo-joggers-4.jpg" alt="Basic Cargo Joggers" title="Basic White Cargo Jeans">
-                    <h3>Basic Cargo Joggers</h3>
-                    <p>Price: 27.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.004)" id="4.004" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-hoodie-tracksuit-1.jpg" alt="Basic Hoodie Tracksuit" title="New Arrival:
-Basic Black Hoodie Tracksuit">
-                    <h3>Basic Hoodie Tracksuit</h3>
-                    <p>Price: 35.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.005)" id="4.005" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
+$conn->close();
+?>
 
 
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-hoodie-tracksuit-2.jpg" alt="Basic Hoodie Tracksuit" title="New Arrival:
-Basic Gray Hoodie Tracksuit">
-                    <h3>Basic Hoodie Tracksuit</h3>
-                    <p>Price: 35.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.006)" id="4.006" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-hoodie-tracksuit-3.jpg" alt="Basic Hoodie Tracksuit" title="Basic Brown Hoodie Tracksuit">
-                    <h3>Basic Hoodie Tracksuit</h3>
-                    <p>Price: 35.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.007)" id="4.007" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-hoodie-tracksuit-4.jpg" alt="Basic Hoodie Tracksuit" title="Basic Hoodie Tracksuit">
-                    <h3>Basic Hoodie Tracksuit</h3>
-                    <p>Price: 35.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.008)" id="4.008" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-zip-up-hoodie-tracksuit-1.jpg" alt="Zip Up Hoodie Tracksuit" title="White Zip Up Hoodie Tracksuit">
-                    <h3>Zip Up Hoodie Tracksuit</h3>
-                    <p>Price: 39.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.009)" id="4.009" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Basic-zip-up-hoodie-tracksuit-2.jpg" alt="Zip Up Hoodie Tracksuit" title="Black Zip Up Hoodie Tracksuit">
-                    <h3>Zip Up Hoodie Tracksuit</h3>
-                    <p>Price: 39.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.011)" id="4.011" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Pack-of-2joggers-1.jpg" alt="Pack Of Two Joggers" title="Pack Of Two Joggers">
-                    <h3>Pack Of Two Joggers</h3>
-                    <p>Price: 39.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.012)" id="4.012" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Pack-of-2joggers-2.jpg" alt="Pack Of Two Joggers" title="Pack of Two Joggers">
-                    <h3>Pack Of Two Joggers</h3>
-                    <p>Price: 39.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.013)" id="4.013" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Ripped-jogger-jeans-1.jpg" alt="Ripped Jogger Jeans" title="New Arrival:
-Ripped Jogger Jeans">
-                    <h3>Ripped Jogger Jeans</h3>
-                    <p>Price: 24.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.014)" id="4.014" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Ripped-jogger-jeans-2.jpg" alt="Ripped Jogger Jeans" title="New Arrival:
-Ripped Jogger Jeans">
-                    <h3>Ripped Jogger Jeans</h3>
-                    <p>Price: 24.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.015)" id="4.015" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
-
-            
-            <div class="produkti">
-                <div><img src="../images/Man/Joggers/Wide-leg-corduroy-joggers.jpg" alt="Wide Leg Joggers" title="Wide Leg Corduroy Joggers">
-                    <h3>Wide Leg Joggers</h3>
-                    <p>Price: 29.99€</p>
-                </div>
-                <div class="shop">
-                    <select id="masa">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                    </select>
-                    <button onclick="cart(4.016)" id="4.016" class="add-to-cart"><img src="../images/Front/cart.png" alt="add-to-cart"></button>
-                </div>
-            </div>
+        
 
         </div>
 
