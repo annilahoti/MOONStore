@@ -13,7 +13,7 @@ if(isset($_POST['addbtn'])){
     $userID = $_POST['userID'];
     $cartID = $_POST['cartID'];
     $productID = $_POST['productID'];
- 
+
 $sql = "SELECT * FROM user_product_cart WHERE userID=? AND productID=?";
 $statement = $conn->prepare($sql);
 $statement->execute([$userID,$productID]);

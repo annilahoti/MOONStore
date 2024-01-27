@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION["id"])){
 $userID=$_SESSION['id'];
 }
-include "../databaseConnection.php";
+include_once "../databaseConnection.php";
 ?>
 
 <html lang="en">
@@ -13,7 +13,7 @@ include "../databaseConnection.php";
     <title>Tops</title>
     <link rel="stylesheet" href="../stilimet.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
-    <script src="../funksionet.js">
+  
     </script>
 </head>
 <body>
@@ -97,14 +97,14 @@ if ($result->num_rows > 0) {
 
                     <?php
        if(isset($_SESSION["id"])){             
-$sql = "SELECT * FROM user_product_cart WHERE userID=? AND productID=?";
+$sql = "SELECT * FROM user_product_cart WHERE userId=? AND productId=?";
 $statement = $conn->prepare($sql);
 $statement->execute([$userID,$productID]);
 $result2= $statement->get_result();
        }
 ?>
-                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart">
-                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){ ?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php }}else{?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } ?></button>
+                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart" style=" cursor: pointer;">
+                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php } else {?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } } else {?><img src="../images/Front/cart.png" alt="add-to-cart"><?php }?></button>
                     </form>
                 </div>
             </div>

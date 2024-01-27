@@ -41,7 +41,7 @@
             }else{
                 echo "Out";
             }?></a>
-            <a href=""><img src="images/Front/shoppingbag.jpg" id="bag"></a>
+            <a href="cart/Cart.php"><img src="images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
 

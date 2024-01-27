@@ -12,7 +12,7 @@ include "../databaseConnection.php";
     <title>Joggers</title>
     <link rel="stylesheet" href="../stilimet.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
-    <script src="../funksionet.js"></script>
+    
 </head>
 <body>
 <header>
@@ -48,7 +48,7 @@ include "../databaseConnection.php";
             }else{
                 echo "Out";
             }?></a>
-            <a href=""><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
+            <a href="../cart/Cart.php"><img src="../images/Front/shoppingbag.jpg" id="bag"></a>
         </div>
     </header>
 
@@ -58,7 +58,7 @@ include "../databaseConnection.php";
    <a href="man.php"><h1>MAN SECTION</h1></a>
     <div class="opsionet">
     <a href="man.php"><b><i>New arrivals</i></b></a>
-    <a href="Jackets.php">Jacket</a>
+    <a href="Jackets.php">Jackets</a>
     <a href="Jeans.php">Jeans</a>
     <a href="T-shirts.php">T-shirts</a>
     <a href="Joggers.php" style="background-color: brown; color: white;">Joggers</a>
@@ -66,7 +66,6 @@ include "../databaseConnection.php";
 
 </div>
  </div>
-
  <main>
         <div class="products">
         <?php
@@ -95,14 +94,14 @@ if ($result->num_rows > 0) {
 
                     <?php
        if(isset($_SESSION["id"])){             
-$sql = "SELECT * FROM user_product_cart WHERE userID=? AND productID=?";
+$sql = "SELECT * FROM user_product_cart WHERE userId=? AND productId=?";
 $statement = $conn->prepare($sql);
 $statement->execute([$userID,$productID]);
 $result2= $statement->get_result();
        }
 ?>
-                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart">
-                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){ ?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php }}else{?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } ?></button>
+                    <button type="submit" name="addbtn"  id="<?php echo ''.$row["cartId"].'' ?>" class="add-to-cart" style=" cursor: pointer;">
+                    <?php if($row["quantity"]==0){echo '<h4 style="color:red">OUT OF STOCK</h4>';}else if(isset($_SESSION["id"])){if($result2->num_rows>0){?><img src="../images/Front/fullcart.png" alt="add-to-cart"><?php } else {?><img src="../images/Front/cart.png" alt="add-to-cart"><?php } } else {?><img src="../images/Front/cart.png" alt="add-to-cart"><?php }?></button>
                     </form>
                 </div>
             </div>

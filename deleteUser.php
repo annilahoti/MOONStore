@@ -1,10 +1,10 @@
 <?php
-    $productId = $_GET['id'];
-    include_once 'productRepository.php';
+    $userId = $_GET['id'];
+    include_once 'userRepository.php';
 
-    $productRepository = new ProductRepository();
+    $userRepository = new $userRepository();
 
-    $productRepository->deleteProduct($productId);
+    $userRepository->deleteUser($userId);
 
     header("Location: Dashboard.php");
 

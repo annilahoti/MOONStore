@@ -1,5 +1,3 @@
-
-
 let i = 0;
 let imgArray = [
     "images/Front/woman1.jpg",

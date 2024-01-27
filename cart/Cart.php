@@ -1,5 +1,6 @@
 <?php
 session_start();
+$userID = $_SESSION['id'];
 include_once '../databaseConnection.php';
 ?>
 <html lang="en">
@@ -8,6 +9,7 @@ include_once '../databaseConnection.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
     <link rel="stylesheet" href="../stilimet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
 </head>
 <body>
   
@@ -58,22 +60,22 @@ include_once '../databaseConnection.php';
 
 <main>
 <?php
-$userID = $_SESSION['id'];
-$sql = "SELECT * FROM user_product_cart cpr inner join products p on cpr.productID=p.id where cpr.userID=$userID";
+
+$sql = "SELECT * FROM user_product_cart cpr inner join product p on cpr.productID=p.id where cpr.userID=$userID";
 $statement = $conn->query($sql);
 $products = $statement->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <div class="products">
 <?php
-    $count=0;
-    $shuma=0;
-// Kontrollo nëse ka produkte në shportën e përdoruesit
+
+$count=sizeof( $products );
+//echo $count;
 if (!empty($products)) {
-    // Për çdo produkt në listën e produkteve
+  
     foreach ($products as $row) {
-        $count++;
-        $shuma += $row['price'];
+        $productID = $row["id"];
+        $cartID = $row['cartId'];
         ?>
         <div class="produkti">
             <div>
@@ -82,18 +84,24 @@ if (!empty($products)) {
                 <p>Price: <?php echo $row["price"]; ?>€</p>
             </div>
             <div class="shop">
-                <select id="masa">
-                    <option>XS</option>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
+            <form method="post" action="removeFromCart.php" style="display: flex; flex-direction: coloumn;">
+            <select id="masa" style="cursor: pointer;">
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
                 </select>
-                    </button>
-                </form>
-            </div>
+                    <input type="hidden" name="userID" value="<?php if(isset($_SESSION["id"])){echo ''.$userID.''; } ?>">
+                    <input type="hidden" name="productID" value="<?php echo ''.$productID.''?> ">
+                    <input type="hidden" name="cartID" value="<?php echo ''.$cartID.''?> ">
+                    <button type="submit" name="removebtn"><img src="trashcan.jpg" style="width: 40px; height: 50px; cursor: pointer;"></button>
+            </form>
         </div>
+        </div>
+        
         <?php
+        
     }
 } else {
     echo '<h1 style="color:red; margin: auto;">Shporta juaj eshte e zbrazet!</h1>';
@@ -101,9 +109,40 @@ if (!empty($products)) {
 
 $conn->close();
 ?>
-</div>
-
-
+        </div>
 </main>
+<footer>
+        <div class="footeri">
+            <div class="logo2">
+                <a href="../home.php"><img src="../images/Front/moon.jpg" alt="logo" id="logo"></a>
+            </div>
+            
+            <div class="socials">
+                <a href="#"><i class="fa-brands fa-facebook" style="color: white;"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram" style="color: white;"></i></a>
+            </div>
+            <div class="about-us">
+                <div class="reth-nesh">
+                    <h3>About us</h3>
+                    <div>
+                        <ul class="ul1">
+                            <li><a href="../AboutUs.php">About us</a></li>
+                            <li><a href="../Policies.php">Policies</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>My Account</h3>
+                    <div>
+                        <ul class="ul1">
+                            <li><a href="">Register</a></li>
+                            <li><a href="#">My Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </footer>
 </body>
 </html>
