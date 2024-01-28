@@ -58,7 +58,11 @@ include_once '../databaseConnection.php';
 
     <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
 
+    
 <main>
+<button onclick="goBack()" style="width: 50px; height:50px; margin-left: 15px; background-color: burlywood; border-radius: 40px; color: rgb(67, 53, 53); border: solid  rgb(67, 53, 53) ; text-align: center; padding-right: 2px;"><b>back</b></button>
+
+
 <?php
 
 $sql = "SELECT * FROM user_product_cart cpr inner join product p on cpr.productID=p.id where cpr.userID=$userID";
@@ -144,5 +148,8 @@ $conn->close();
             </div>
             </div>
     </footer>
+
+
+    <script src="../funksionet.js"></script>
 </body>
 </html>
