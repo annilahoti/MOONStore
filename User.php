@@ -10,14 +10,16 @@
 
         private $role;
 
+        private $editedBy;
 
-        function __construct($id,$name,$surname,$email,$password,$role){
+        function __construct($id,$name,$surname,$email,$password,$role, $editedBy){
             $this->id=$id;
             $this->name=$name;
             $this->surname=$surname;
             $this->email=$email;
             $this->password=$password;
             $this->role=$role;
+            $this->editedBy=$editedBy;
         }
 
         public function getId(){
@@ -52,6 +54,12 @@
         }
         public function setRole($role){
             $this->role=$role;
+        }
+        public function getEditedBy(){
+            return $this->editedBy;
+        }
+        public function setEditedBy($editedBy){
+            $this->editedBy=$editedBy;
         }
     }
 

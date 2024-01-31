@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stilimet.css">
     <title>Contact Us</title>
+    <style>
+        @media (max-width: 1300px) {
+         .maincontact{
+        margin:auto;
+    }
+}
+    </style>
 </head>
 
 <body>

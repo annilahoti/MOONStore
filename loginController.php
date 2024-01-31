@@ -23,7 +23,8 @@ if(isset($_POST["loginbtn"])){
                 $row['surname'],
                 $row['email'],
                 $row['password'],
-                $row['roli']
+                $row['roli'],
+                $row['editedBy']
             );
             $users[]=$user;
         }

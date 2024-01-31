@@ -13,19 +13,18 @@ class UserRepository{
 
         $conn = $this->connection;
 
-        $id = $user->getId();
         $name = $user->getName();
         $surname = $user->getSurname();
         $email = $user->getEmail();
         $password = $user->getPassword();
         $roli = $user->getRole();
-
-        $sql = "INSERT INTO user (id,name,surname,email,password,roli) VALUES (?,?,?,?,?,?)";
+     
+        $sql = "INSERT INTO user (name,surname,email,password,roli) VALUES (?,?,?,?,?)";
 
        
         $statement = $conn->prepare($sql);
 
-        $statement->execute([$id,$name,$surname,$email,$password,$roli]);
+        $statement->execute([$name,$surname,$email,$password,$roli]);
     }
 
     function getAllUsers(){
@@ -50,13 +49,13 @@ class UserRepository{
         return $user;
     }
 
-    function updateUser($id,$name,$surname,$email,$password){
+    function updateUser($id,$name,$surname,$email,$password,$editedBy){
         $conn = $this->connection;
 
-        $sql = "UPDATE user SET name=?, surname=?, email=?, password=? WHERE id=?";
+        $sql = "UPDATE user SET name=?, surname=?, email=?, password=?, editedBy=? WHERE id=?";
 
         $statement = $conn->prepare($sql);
-        $statement->execute([$name,$surname,$email,$password,$id]);
+        $statement->execute([$name,$surname,$email,$password,$editedBy,$id]);
 
         echo "<script>alert('Update was Successful);</script>";
     }

@@ -19,7 +19,8 @@ while ($row = mysqli_fetch_assoc($productResult)) {
         $row['section'],
         $row['quantity'],
         $row['cartId'],
-        $row['new']
+        $row['new'],
+      
     );
 }
 ?>
@@ -44,7 +45,7 @@ while ($row = mysqli_fetch_assoc($productResult)) {
         <input type="text" name="quantity"  value="<?=$product->getQuantity()?>"> <br> <br>
         <input type="text" name="cartId"  value="<?=$product->getCartId()?>"> <br> <br>
         <input type="text" name="new"  value="<?=$product->getNew()?>"> <br> <br>
-
+     
         <input type="submit" name="editBtnP" value="save"> <br> <br>
     </form>
 </body>
@@ -61,8 +62,7 @@ if (isset($_POST['editBtnP'])) {
     $section = $_POST["section"];
     $quantity = $_POST["quantity"];
     $cartId = $_POST["cartId"];
-    $new = $_POST["new"];
-
+   
     $productRepository->updateProduct($id,$name,$source,$price,$category,$section,$quantity,$cartId,$new);
     header("Location: Dashboard.php");
 }

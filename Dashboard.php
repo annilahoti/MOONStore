@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php session_start();
+include 'productRepository.php'; ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -52,7 +54,7 @@
         <br><br>
     <table border="3" style="width: 50%; margin: auto; border: solid rgb(87, 51, 3); " >
         <tr>
-            <th colspan="7" style="color: red;">USER TABLE</th>
+            <th colspan="8" style="color: red;">USER TABLE</th>
         </tr>
 
         <tr>
@@ -63,6 +65,7 @@
             <th>PASSWORD</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Edited By</th>
         </tr>
         
         <?php
@@ -83,7 +86,7 @@
                     <td>$user[password]</td>
                     <td><a href='editUser.php?id=$user[id]'>Edit</a></td>
                     <td><a href='deleteUser.php?id=$user[id]'>Delete</a></td>
-                    
+                    <td>$user[editedBy]</td>
                 </tr>    
                 ";
             }
@@ -92,11 +95,14 @@
     </table>
     <br><br>
     <br>
+            <button style="width: 100px; height:50px; background-color: burlywood; border-radius: 40px; border: solid  rgb(67, 53, 53) ; text-align: center; padding-right: 2px; align-self: center;"><a href="addProduct.php" style="text-decoration: none; color: rgb(67, 53, 53);">Add New Product</a></button>
+            <br>
 
-    <table border="3" style="width: 50%; margin: auto; border: solid rgb(87, 51, 3); " >
+
+    <table border="3" style="width: 50%; margin: auto; border: solid rgb(87, 51, 3); ">
 
     <tr>
-            <th colspan="11" style="color: red;">PRODUCT TABLE</th>
+            <th colspan="12" style="color: red;">PRODUCT TABLE</th>
         </tr>
 
         <tr>
@@ -111,10 +117,13 @@
             <th>NEW</th>
             <th>Edit</th>
             <th>Delete</th>
+        
         </tr>
         
         <?php
             include_once 'productRepository.php';
+
+
 
             $productRepository = new ProductRepository();
 
@@ -135,7 +144,7 @@
                     <td>$product[new]</td>
                     <td><a href='editProduct.php?id=$product[id]'>Edit</a></td>
                     <td><a href='deleteProduct.php?id=$product[id]'>Delete</a></td>
-                    
+            
                 </tr>    
                ";
             }

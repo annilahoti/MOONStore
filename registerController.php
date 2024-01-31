@@ -11,9 +11,10 @@ if (isset($_POST['signupbtn'])) {
         $surname = $_POST['surname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $id = rand(1,999);
+        $id;
+        $editedBy;
         $roli = "user";
-        $user = new User($id,$name,$surname,$email,$password,$roli);
+        $user = new User($id,$name,$surname,$email,$password,$roli,$editedBy);
         $userRepository = new UserRepository();
 
         $userRepository->insertUsers($user);
