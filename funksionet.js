@@ -1,5 +1,6 @@
-let i = 0;
-let imgArray = [
+
+var b = 0;
+var imgArray = [
     "images/Front/woman1.jpg",
     "images/Front/woman2.jpg",
     "images/Front/woman3.jpg",
@@ -10,20 +11,20 @@ let imgArray = [
 ];
 
 function nderroW(){
-    document.getElementById('slideshowW').src = imgArray[i];
-    if(i<imgArray.length-1){
-        i++;
+    document.getElementById('slideshowW').src = imgArray[b];
+    if(b<imgArray.length-1){
+        b++;
     }
     else{
-        i=0;
+        b=0;
     }
     setTimeout(nderroW, 3000);
 }
 
 
 
-let j=0;
-let imgArray2 = [
+var j=0;
+var imgArray2 = [
     "images/Front/man1.jpg",
     "images/Front/man2.jpg",
     "images/Front/man3.jpg",
@@ -52,4 +53,4 @@ window.addEventListener('load', function() {
 
 function goBack() {
             window.history.go(-1);
-        }
+        }  

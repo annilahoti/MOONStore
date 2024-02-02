@@ -10,7 +10,8 @@ class Product{
     private $quantity;
     private $cartId;
     private $new;
-    function __construct($id,$name,$source,$price,$category,$section,$quantity,$cartId,$new){
+    private $editedByP;
+    function __construct($id,$name,$source,$price,$category,$section,$quantity,$cartId,$new,$editedByP){
         $this->id = $id;    
         $this->name = $name;    
         $this->source = $source;    
@@ -20,6 +21,7 @@ class Product{
         $this->quantity = $quantity;
         $this->cartId = $cartId;
         $this->new = $new;
+        $this->editedByP = $editedByP;
     }
 
     public function getId(){  
@@ -49,6 +51,9 @@ class Product{
     public function getNew(){
         return $this->new;
     }
+    public function getEditedByP(){
+        return $this->editedByP;
+    }
     public function setName($name){
         $this->name=$name;
     }
@@ -72,6 +77,9 @@ class Product{
     }
     public function setNew($new){
         $this->new = $new;
+    }
+    public function setEditedByP($editedByP){
+        $this->editedByP = $editedByP;
     }
   }
 

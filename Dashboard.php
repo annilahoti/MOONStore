@@ -7,6 +7,19 @@ include 'productRepository.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="stilimet.css">
+    <style>
+        html, body{
+            width: 100%;
+        }
+       table{
+        width:100%;
+       }
+    @media (max-width: 1300px) {
+        .table{
+            margin:auto;
+        }
+    }
+    </style>
 </head>
 <body>
 
@@ -52,7 +65,7 @@ include 'productRepository.php'; ?>
 
     <main>
         <br><br>
-    <table border="3" style="width: 50%; margin: auto; border: solid rgb(87, 51, 3); " >
+    <table border="3" style="width: 95%; margin: auto; border: solid rgb(87, 51, 3); " class="table">
         <tr>
             <th colspan="8" style="color: red;">USER TABLE</th>
         </tr>
@@ -99,10 +112,10 @@ include 'productRepository.php'; ?>
             <br>
 
 
-    <table border="3" style="width: 50%; margin: auto; border: solid rgb(87, 51, 3); ">
+    <table border="3" style="width: 95%; margin: auto; border: solid rgb(87, 51, 3); " class="table">
 
     <tr>
-            <th colspan="12" style="color: red;">PRODUCT TABLE</th>
+            <th colspan="13" style="color: red;">PRODUCT TABLE</th>
         </tr>
 
         <tr>
@@ -117,6 +130,7 @@ include 'productRepository.php'; ?>
             <th>NEW</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Edited By</th>
         
         </tr>
         
@@ -144,7 +158,7 @@ include 'productRepository.php'; ?>
                     <td>$product[new]</td>
                     <td><a href='editProduct.php?id=$product[id]'>Edit</a></td>
                     <td><a href='deleteProduct.php?id=$product[id]'>Delete</a></td>
-            
+                    <td>$product[editedByP]</td>
                 </tr>    
                ";
             }

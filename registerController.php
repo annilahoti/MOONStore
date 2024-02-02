@@ -1,5 +1,6 @@
 
-<?php  session_start();
+<?php  
+
 include 'User.php';
 include 'userRepository.php';
 
@@ -7,6 +8,14 @@ if (isset($_POST['signupbtn'])) {
     if (empty($_POST['name']) || empty($_POST['surname']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirmPassword'])) {
         echo "Fill all fields!";
     }else{
+
+        $email = $_POST['email'];
+$usersQuery = "SELECT * FROM user WHERE email='$email'";
+$usersResult = mysqli_query($conn, $usersQuery);
+$emailCount = mysqli_num_rows($usersResult);
+
+if($emailCount==0){
+
         $name = $_POST['name'];
         $surname = $_POST['surname'];
         $email = $_POST['email'];
@@ -18,10 +27,10 @@ if (isset($_POST['signupbtn'])) {
         $userRepository = new UserRepository();
 
         $userRepository->insertUsers($user);
-        
-        $_SESSION["email"] = $user->getEmail();
-        $_SESSION["role"] = $user->getRole();
-        $_SESSION["loginTime"]= date("h:i:s");
-        header("Location: home.php");
-    }
+        header("Location: logIn.php");
+    } 
+    else{
+    echo "User Already Exists!";
+}
+}
 }
