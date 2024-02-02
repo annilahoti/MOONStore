@@ -257,9 +257,9 @@ if (!empty($products)) {
         <legend>Checkout</legend>
     <div class="checkoutbox">
         <div class="cardForma">
-    <form action="" class="forma" method="post">
+    <form action="" class="forma" method="post" onsubmit="return validatePhone()">
         <input type="text" name="address" id="" placeholder="Address">
-        <input type="tel" name="" id="" pattern="[0]{1}[4]{1}[4,5,8,9]{1}[0-9]{3}[0-9]{3}" placeholder="Phone Number" required>
+        <input type="tel" name="" id="phoneNumber" placeholder="Phone Number" required>
         <p>Total Products: <?php echo "$count"?></p>
         <p>Total Price: <?php echo "$totalPrice"?>€</p>
         <button type="submit" name="checkoutbtn" id="check">Checkout</button>
@@ -316,5 +316,20 @@ $conn->close();
 
 
     <script src="../funksionet.js"></script>
+
+    <script>
+    function validatePhone(){
+        var phone =document.getElementById('phoneNumber').value;
+
+        var phoneRegex = /^04\d{7}$/;
+
+        if (!phoneRegex.test(phone)) {
+            alert('Please enter a valid phone');
+            return false;
+        }
+        return true;
+    }
+
+    </script>
 </body>
 </html>
