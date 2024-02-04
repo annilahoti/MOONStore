@@ -26,9 +26,6 @@
             $statement = $conn->prepare($sql);
     
             $statement->execute([$name,$source,$price, $category, $section, $quantity, $cartId,$new]);
-    
-            echo "<script> alert('Product has been inserted successfuly!); </script>";
-    
         }
         function getAllProducts(){
             $conn = $this->connection;
@@ -57,7 +54,7 @@
             
             $statement->execute([$name, $source, $price, $category, $section, $quantity, $cartId, $new, $editedByP, $id]);
     
-            echo "<script> alert('Update was successful'); </script>";
+            echo "<script>alert('Update was successful'); </script>";
         }
 
         function deleteProduct($id){

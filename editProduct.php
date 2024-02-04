@@ -1,4 +1,5 @@
 <?php session_start();
+ob_start();
 $editedByP = $_SESSION['name'];
 $productId = $_GET['id'];
 include_once 'productRepository.php';
@@ -10,7 +11,7 @@ include_once 'Product.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit User</title>
+    <title>Edit Product</title>
     <link rel="stylesheet" href="stilimet.css">
     <style>
         .forma{
@@ -154,9 +155,7 @@ while ($row = mysqli_fetch_assoc($productResult)) {
 
     <div class="cardForma">
     <p style="font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:rgb(82, 41, 14);">
-    <b>Edit Product</b>
-    </p> 
+    color:rgb(82, 41, 14);"><b>Edit Product</b></p> 
 
     <form action="" method="post" class="forma">
         <p><b>Id</b></p>
@@ -176,8 +175,8 @@ while ($row = mysqli_fetch_assoc($productResult)) {
         <p><b>CartId</b></p>
         <input type="text" name="cartId"  value="<?=$product->getCartId()?>">
         <p><b>New</b></p>
-        <input type="text" name="new"  value="<?=$product->getNew()?>"> <br> <br>
-     
+        <input type="text" name="new"  value="<?=$product->getNew()?>">
+         <br> <br>
         <input type="submit" name="editBtnP" value="save" id="formaButtonP"> <br> <br>
     </form>
     </div>
@@ -199,7 +198,7 @@ if (isset($_POST['editBtnP'])) {
 
     $productRepository->updateProduct($id,$name,$source,$price,$category,$section,$quantity,$cartId,$new,$editedByP);
     header("location: Dashboard.php");
-    exit();
+    ob_end_flush();   
 }
 ?>
 

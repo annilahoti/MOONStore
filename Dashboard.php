@@ -1,5 +1,5 @@
 <?php session_start();
-include 'productRepository.php'; ?>
+include 'databaseConnection.php'; ?>
 
 <html lang="en">
 <head>
@@ -11,9 +11,7 @@ include 'productRepository.php'; ?>
         html, body{
             width: 100%;
         }
-       table{
-        width:100%;
-       }
+   
     @media (max-width: 1300px) {
         .table{
             margin:auto;
@@ -67,7 +65,7 @@ include 'productRepository.php'; ?>
         <br><br>
     <table border="3" style="width: 95%; margin: auto; border: solid rgb(87, 51, 3); " class="table">
         <tr>
-            <th colspan="8" style="color: red;">USER TABLE</th>
+            <th colspan="8" style="color: red;">USERS TABLE</th>
         </tr>
 
         <tr>
@@ -115,7 +113,7 @@ include 'productRepository.php'; ?>
     <table border="3" style="width: 95%; margin: auto; border: solid rgb(87, 51, 3); " class="table">
 
     <tr>
-            <th colspan="13" style="color: red;">PRODUCT TABLE</th>
+            <th colspan="13" style="color: red;">PRODUCTS TABLE</th>
         </tr>
 
         <tr>
@@ -162,10 +160,59 @@ include 'productRepository.php'; ?>
                 </tr>    
                ";
             }
-    
+           
         ?>
     </table>
     <br><br>
+
+
+    
+    <table border="3" style="width: 95%; margin: auto; border: solid rgb(87, 51, 3); " class="table">
+
+    <tr>
+            <th colspan="13" style="color: red;">ORDERS TABLE</th>
+        </tr>
+
+        <tr>
+            <th>ID</th>
+            <th>Products</th>
+            <th>Total Price</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>User ID</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Edited By</th>        
+        </tr>
+        
+        <?php
+          if($conn){
+    
+          $sql = "SELECT * FROM porosia";
+  
+          $statement = $conn->query($sql);
+          $orders = $statement->fetch_all(MYSQLI_ASSOC);
+          }
+            foreach($orders as $order){
+                echo
+                "
+                <tr>
+                    <td>$order[id]</td>
+                    <td>$order[numriProdukteve]</td>
+                    <td>$order[totali]</td>
+                    <td>$order[adresa]</td>
+                    <td>$order[numriTelefonit]</td>
+                    <td>$order[userID]</td>
+                    <td><a href='editOrder.php?id=$order[id]'>Edit</a></td>
+                    <td><a href='deleteOrder.php?id=$order[id]'>Delete</a></td>
+                    <td>$order[editedByPo]</td>
+                    </tr>    
+                    ";
+                 }
+             ?>
+         </table>
+         <br><br>
+     
         </main>       
 </body>
 <?php include 'footer.php'; ?>

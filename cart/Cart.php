@@ -131,8 +131,20 @@ $totalPrice = 0;
 #masa{
     margin:auto;
 }
-
-
+#backbutton{
+    width: 50px; 
+    height:50px; 
+    margin-left: 15px; 
+    background-color: burlywood; 
+    border-radius: 40px; 
+    color: rgb(67, 53, 53); 
+    border: solid  rgb(67, 53, 53) ; 
+    text-align: center; 
+    padding-right: 2px;
+}
+#backbutton:hover{
+    cursor: pointer;
+}
 @media (max-width: 1300px) {
     .products2{
     display: flex;
@@ -197,8 +209,8 @@ $totalPrice = 0;
 
 
     <p style="color: rgb(78, 60, 60); font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 17px; text-align: center; margin-bottom: 5px;">Mirë se vini në website-in tonë! Moon Store ofron transport falas në Kosovë dhe Shqipëri</p>
-    <div id="backbutton">
-<button onclick="goBack()" style="width: 50px; height:50px; margin-left: 15px; background-color: burlywood; border-radius: 40px; color: rgb(67, 53, 53); border: solid  rgb(67, 53, 53) ; text-align: center; padding-right: 2px;"><b>back</b></button>
+    <div>
+<button id="backbutton" onclick="goBack()"><b>back</b></button>
         </div>
 
 <main>
@@ -257,11 +269,14 @@ if (!empty($products)) {
         <legend>Checkout</legend>
     <div class="checkoutbox">
         <div class="cardForma">
-    <form action="" class="forma" method="post" onsubmit="return validatePhone()">
-        <input type="text" name="address" id="" placeholder="Address">
-        <input type="tel" name="" id="phoneNumber" placeholder="Phone Number" required>
-        <p>Total Products: <?php echo "$count"?></p>
-        <p>Total Price: <?php echo "$totalPrice"?>€</p>
+    <form action="../porosia.php" class="forma" method="post" onsubmit="return validatePhone()">
+        <input type="text" name="address" placeholder="Address">
+        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" required>
+        <p>Total Products: <?php echo $count; ?></p>
+        <p>Total Price: <?php echo $totalPrice;?>€</p>
+        <input type="hidden" name="nrP" value="<?php echo $count?>">
+        <input type="hidden" name="price" value="<?php echo $totalPrice?>">
+        <input type="hidden" name="userId" value="<?php  if(isset($_SESSION["id"])){echo ''.$userID.''; } ?>">
         <button type="submit" name="checkoutbtn" id="check">Checkout</button>
         
     </form>
@@ -305,7 +320,7 @@ $conn->close();
                     <h3>My Account</h3>
                     <div>
                         <ul class="ul1">
-                            <li><a href="">Register</a></li>
+                            <li><a href="../signUp.php">Register</a></li>
                             <li><a href="#">My Account</a></li>
                         </ul>
                     </div>

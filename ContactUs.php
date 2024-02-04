@@ -9,6 +9,7 @@
         @media (max-width: 1300px) {
          .maincontact{
         margin:auto;
+        width: 60%;
     }
 }
     </style>
@@ -66,8 +67,8 @@
    <input type="text" id="contact.name" placeholder="Name" required/>
         <input type="email" id="contact.email" placeholder="Email" required/>
         <input type="phone" placeholder="Phone Number" >
-        <textarea name="comment" id="contact.comment" cols="30" rows="4" placeholder="KOMENT" required></textarea>
-        <button type="submit">Dergo Mesazh</button>
+        <textarea name="comment" id="contact.comment" cols="30" rows="4" placeholder="COMMENT" required></textarea>
+        <button type="submit">Send Message</button>
 
    </form>
     

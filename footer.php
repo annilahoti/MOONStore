@@ -31,8 +31,8 @@
                     <h3>My Account</h3>
                     <div>
                         <ul class="ul1">
-                            <li><a href="">Register</a></li>
-                            <li><a href="#">My Account</a></li>
+                            <li><a href="signUp.php">Register</a></li>
+                            <li><a href="cart/Cart.php">My Account</a></li>
                         </ul>
                     </div>
                 </div>

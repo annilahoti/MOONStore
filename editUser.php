@@ -151,29 +151,20 @@ while($row = mysqli_fetch_assoc($usersResult)){
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  
+
     <div class="cardForma">
     <p style="font-size: 30px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:rgb(82, 41, 14);"><b>Edit User</b></p>   
     <form action="" method="post" class="forma">
-        <p>Id</p>
+        <p><b>Id</b></p>
         <input type="text" name="id"  value="<?=intval($user->getId())?>" readonly> 
-        <p>Name</p>
+        <p><b>Name</b></p>
         <input type="text" name="name"  value="<?=$user->getName()?>">
-        <p>Surname</p>
+        <p><b>Surname</b></p>
         <input type="text" name="surname"  value="<?=$user->getSurname()?>"> 
-        <p>Email</p>
+        <p><b>Email</b></p>
         <input type="text" name="email"  value="<?=$user->getEmail()?>">
-        <p>Password</p>
+        <p><b>Password</b></p>
         <input type="text" name="password"  value="<?=$user->getPassword()?>"> 
         <br> <br>
         <input type="submit" name="editBtn" value="save" id="formabutton"> <br> <br>
