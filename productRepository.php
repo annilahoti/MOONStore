@@ -21,7 +21,7 @@
             $new = $product->getNew();
           
             
-            $sql = "INSERT INTO product(name,source,price,category,section,quantity,cartId,new) VALUES (?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO product(name,source,price,category,section,quantity,cartId,new) VALUES (?,?,?,?,?,?,?,?)";
         
             $statement = $conn->prepare($sql);
     

@@ -2,6 +2,7 @@
 include_once 'productRepository.php';
 include_once 'databaseConnection.php';
 include_once 'Product.php';
+ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -172,6 +173,7 @@ if (isset($_POST['editBtnP'])) {
     $productRepository = new ProductRepository();
     $productRepository->insertProduct($product);
     header("Location: Dashboard.php");
+    ob_end_flush();   
 }
 
 ?>
